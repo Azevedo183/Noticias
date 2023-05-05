@@ -10,11 +10,13 @@ private const val VERSAO_BADE_DADOS = 1
 class BDLivrosOpenHelper(
     context: Context?,
 ) : SQLiteOpenHelper(context, NOME_BASE_DADOS, null, VERSAO_BADE_DADOS) {
-    override fun onCreate(p0: SQLiteDatabase?) {
-
+    override fun onCreate(db: SQLiteDatabase?) {
+        requireNotNull(db)
+        Tabela_Categorias(db).cria()
+        Tabela_Noticias(db).cria()
     }
 
-    override fun onUpgrade(p0: SQLiteDatabase?, oldVersion : Int, newVersion: Int) {
+    override fun onUpgrade(db: SQLiteDatabase?, oldVersion : Int, newVersion: Int) {
         TODO("Not yet implemented")
     }
 }
