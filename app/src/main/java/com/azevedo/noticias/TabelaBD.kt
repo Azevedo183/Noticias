@@ -3,6 +3,7 @@ package com.azevedo.noticias
 import android.content.ContentValues
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
+import android.provider.BaseColumns
 
 abstract class TabelaBD(val db: SQLiteDatabase, val nome: String) {
     abstract fun cria()
@@ -19,5 +20,9 @@ abstract class TabelaBD(val db: SQLiteDatabase, val nome: String) {
 
     fun apaga(where: String, argsWhere: Array<String>) =
         db.delete(nome, where, argsWhere)
+
+    companion object{
+        const val CHAVE_TABELA = "${BaseColumns._ID} INTEGER PRIMARY KEY AUTOINCREMENT"
+    }
 
 }
