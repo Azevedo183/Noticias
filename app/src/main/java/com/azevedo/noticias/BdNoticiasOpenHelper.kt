@@ -4,10 +4,10 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
-private const val NOME_BASE_DADOS = "Noticias.db"
+
 private const val VERSAO_BADE_DADOS = 1
 
-class BDLivrosOpenHelper(
+class BdNoticiasOpenHelper(
     context: Context?,
 ) : SQLiteOpenHelper(context, NOME_BASE_DADOS, null, VERSAO_BADE_DADOS) {
     override fun onCreate(db: SQLiteDatabase?) {
@@ -18,5 +18,9 @@ class BDLivrosOpenHelper(
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion : Int, newVersion: Int) {
         TODO("Not yet implemented")
+    }
+
+    companion object{
+        const val NOME_BASE_DADOS = "Noticias.db"
     }
 }
