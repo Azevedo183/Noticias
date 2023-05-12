@@ -1,6 +1,7 @@
 package com.azevedo.noticias
 
 import android.content.Context
+import android.database.sqlite.SQLiteDatabase
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 
@@ -20,6 +21,8 @@ class BdTest {
 
     private fun getAppContex(): Context =
         InstrumentationRegistry.getInstrumentation().targetContext
+
+
     @Before
     fun apagaBD(){
         getAppContex().deleteDatabase(BdNoticiasOpenHelper.NOME_BASE_DADOS)
@@ -35,7 +38,17 @@ class BdTest {
     fun consegueAbrirBD(){
         val openHelper = BdNoticiasOpenHelper(getAppContex())
         val bd = openHelper.readableDatabase
-        assert((bd.isOpen))
+            assert((bd.isOpen))
+    }
+
+    @Test
+    fun consegueInserirCategorias(){
+        val openHelper = BdNoticiasOpenHelper(getAppContex())
+        val bd = openHelper.writableDatabase
+
+        val categoria = Categoria("Economia")
+        Tabela_Categorias(bd).insere(categoria.toContentVaules())
+        assertNotEquals(-1, id)
     }
 
 }
