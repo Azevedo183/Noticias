@@ -1,7 +1,6 @@
 package com.azevedo.noticias
 
 import android.content.Context
-import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.provider.BaseColumns
 import androidx.test.platform.app.InstrumentationRegistry
@@ -46,7 +45,7 @@ class BdTest {
         bd: SQLiteDatabase,
         noticia: Noticias
     ) {
-        Tabela_Noticias(bd).insere(noticia.toContentValues())
+        noticia.id = Tabela_Noticias(bd).insere(noticia.toContentValues())
         assertNotEquals(-1, noticia.id)
     }
 
