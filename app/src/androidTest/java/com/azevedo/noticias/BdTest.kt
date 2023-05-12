@@ -1,7 +1,9 @@
 package com.azevedo.noticias
 
 import android.content.Context
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
+import android.provider.BaseColumns
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 
@@ -28,19 +30,6 @@ class BdTest {
         getAppContex().deleteDatabase(BdNoticiasOpenHelper.NOME_BASE_DADOS)
     }
 
-    @Test
-    fun useAppContext() {
-        // Context of the app under test.
-        val appContext = getAppContex()
-        assertEquals("com.azevedo.noticias", appContext.packageName)
-    }
-
-    fun consegueAbrirBD(){
-        val openHelper = BdNoticiasOpenHelper(getAppContex())
-        val bd = openHelper.readableDatabase
-            assert((bd.isOpen))
-    }
-
     private fun getWritableDatabase(): SQLiteDatabase {
         val openHelper = BdNoticiasOpenHelper(getAppContex())
         return openHelper.writableDatabase
@@ -62,7 +51,19 @@ class BdTest {
     }
 
 
+    @Test
+    fun useAppContext() {
+        // Context of the app under test.
+        val appContext = getAppContex()
+        assertEquals("com.azevedo.noticias", appContext.packageName)
+    }
 
+    @Test
+    fun consegueAbrirBD(){
+        val openHelper = BdNoticiasOpenHelper(getAppContex())
+        val bd = openHelper.readableDatabase
+            assert((bd.isOpen))
+    }
 
     @Test
     fun consegueInserirCategorias(){
@@ -89,6 +90,33 @@ class BdTest {
         insereNoticia(bd, noticia2)
     }
 
+    @Test
+    fun consegueLerCategoria(){
+        val bd = getWritableDatabase()
+
+        val categAtualidade = Categoria("Atualidade","As noticias da atualidade")
+        inserirCategoria(bd, categAtualidade)
+
+        val categGuerra = Categoria("Guerra","As noticias da Guerra")
+        inserirCategoria(bd, categGuerra)
+
+        val tabelaCategorias = Tabela_Categorias(bd)
+        val cursor = tabelaCategorias.consulta(Tabela_Categorias.CAMPOS, "${BaseColumns._ID}=?", arrayOf(categGuerra.id.toString()),null,null,null)
+
+        assert(cursor.moveToNext())
+
+        val categBD = Categoria.formCursor(cursor)
+
+        assertEquals(categGuerra, categBD)
+
+        val cursorTodasCategorias = tabelaCategorias.consulta(
+            Tabela_Categorias.CAMPOS,
+            null, null,null,null,
+            Tabela_Categorias.CAMPO_NOME
+        )
+            assert(cursorTodasCategorias.count > 1)
+
+    }
 
 
 
