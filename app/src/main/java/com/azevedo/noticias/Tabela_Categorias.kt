@@ -1,6 +1,7 @@
 package com.azevedo.noticias
 
 import android.database.sqlite.SQLiteDatabase
+import android.provider.BaseColumns
 
 
 class Tabela_Categorias(db: SQLiteDatabase) : TabelaBD(db, NOME_TABELA) {
@@ -12,5 +13,9 @@ class Tabela_Categorias(db: SQLiteDatabase) : TabelaBD(db, NOME_TABELA) {
         const val NOME_TABELA = "categorias"
         const val CAMPO_NOME = "nome"
         const val CAMPO_DESCRICAO = "descricao"
+
+        val CAMPOS = arrayOf(BaseColumns._ID, CAMPO_NOME, CAMPO_DESCRICAO)
+
+
     }
 }
