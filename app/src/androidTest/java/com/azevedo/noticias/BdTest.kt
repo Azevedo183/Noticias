@@ -41,14 +41,55 @@ class BdTest {
             assert((bd.isOpen))
     }
 
+    private fun getWritableDatabase(): SQLiteDatabase {
+        val openHelper = BdNoticiasOpenHelper(getAppContex())
+        return openHelper.writableDatabase
+    }
+    private fun inserirCategoria(
+        bd: SQLiteDatabase,
+        categoria: Categoria
+    ) {
+        categoria.id = Tabela_Categorias(bd).insere(categoria.toContentVaules())
+        assertNotEquals(-1, categoria.id)
+    }
+
+    private fun insereNoticia(
+        bd: SQLiteDatabase,
+        noticia: Noticias
+    ) {
+        Tabela_Noticias(bd).insere(noticia.toContentValues())
+        assertNotEquals(-1, noticia.id)
+    }
+
+
+
+
     @Test
     fun consegueInserirCategorias(){
-        val openHelper = BdNoticiasOpenHelper(getAppContex())
-        val bd = openHelper.writableDatabase
+        val bd = getWritableDatabase()
 
-        val categoria = Categoria("Economia")
+        val categoria = Categoria("Economia", "Economia")
         Tabela_Categorias(bd).insere(categoria.toContentVaules())
-        assertNotEquals(-1, id)
+        assertNotEquals(-1, categoria.id)
     }
+
+
+
+    @Test
+    fun consegueInserirNoticia(){
+        val bd = getWritableDatabase()
+
+        val categoria = Categoria("Politia", "Politica")
+        inserirCategoria(bd, categoria)
+
+        val noticia1 = Noticias("Marcelo dissolve assembleia",categoria.id,"12/05/2022")
+        insereNoticia(bd, noticia1)
+
+        val noticia2 = Noticias("Ana Gomes:Este governo também está a fabricar populismos",categoria.id,"11/05/2023")
+        insereNoticia(bd, noticia2)
+    }
+
+
+
 
 }
