@@ -69,9 +69,8 @@ class BdTest {
     fun consegueInserirCategorias(){
         val bd = getWritableDatabase()
 
-        val categoria = Categoria("Economia", "Economia")
-        Tabela_Categorias(bd).insere(categoria.toContentVaules())
-        assertNotEquals(-1, categoria.id)
+        val categoria = Categoria("Economia","As noticias de economia")
+        inserirCategoria(bd, categoria)
     }
 
 
@@ -80,7 +79,7 @@ class BdTest {
     fun consegueInserirNoticia(){
         val bd = getWritableDatabase()
 
-        val categoria = Categoria("Politia", "Politica")
+        val categoria = Categoria("Politica","As noticias de politica")
         inserirCategoria(bd, categoria)
 
         val noticia1 = Noticias("Marcelo dissolve assembleia",categoria.id,"12/05/2022")
