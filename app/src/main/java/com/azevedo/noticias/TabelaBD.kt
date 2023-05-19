@@ -18,7 +18,7 @@ abstract class TabelaBD(val db: SQLiteDatabase, val nome: String) {
     fun altera(valores: ContentValues, where: String, argsWhere: Array<String>) =
         db.update(nome, valores, where, argsWhere)
 
-    fun apaga(where: String, argsWhere: Array<String>) =
+    fun elimina(where: String, argsWhere: Array<String>) =
         db.delete(nome, where, argsWhere)
 
     companion object{

@@ -208,4 +208,41 @@ class BdTest {
 
     }
 
+    @Test
+    fun consegueEliminarCategoria(){
+        val bd = getWritableDatabase()
+
+        val categoria = Categoria("...","...")
+        inserirCategoria(bd, categoria)
+
+        val registoEliminado = Tabela_Categorias(bd).elimina(
+            "${BaseColumns._ID}=?",
+            arrayOf(categoria.id.toString())
+        )
+
+        assertEquals(1, registoEliminado)
+    }
+
+    @Test
+    fun consegueEliminarNoticia(){
+        val bd = getWritableDatabase()
+
+        val categTec = Categoria("Educação","Notícias sobre educação, reformas educacionais, instituições de ensino, eventos educacionais e tendências educacionais")
+        inserirCategoria(bd, categTec)
+
+        val data = Calendar.getInstance()
+        data.set(2023, 5, 16)
+        val noticia = Noticias("Ordem para marcação de faltas injustificadas? Não é verdade",categTec.id,data)
+        insereNoticia(bd, noticia)
+
+
+        val registoApagados = Tabela_Noticias(bd).elimina(
+            "${BaseColumns._ID}=?",
+            arrayOf(noticia.id.toString()),
+        )
+
+        assertEquals(1, registoApagados)
+
+    }
+
 }
