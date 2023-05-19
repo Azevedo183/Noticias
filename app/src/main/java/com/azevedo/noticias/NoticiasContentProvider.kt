@@ -2,6 +2,7 @@ package com.azevedo.noticias
 
 import android.content.ContentProvider
 import android.content.ContentValues
+import android.content.UriMatcher
 import android.database.Cursor
 import android.net.Uri
 
@@ -41,5 +42,19 @@ class NoticiasContentProvider : ContentProvider() {
         selectionArgs: Array<out String>?
     ): Int {
         TODO("Not yet implemented")
+    }
+
+    companion object{
+        private const val AUTORIDADE = "com.azevedo.noticias"
+        private const val CATEGORIAS = "categorias"
+        private const val NOTICIAS = "noticias"
+
+        private const val URI_CATEGORIAS = 100
+        private const val URI_NOTICIAS = 200
+
+        fun uriMatcher() = UriMatcher(UriMatcher.NO_MATCH).apply {
+            addURI(AUTORIDADE, CATEGORIAS, URI_CATEGORIAS)
+            addURI(AUTORIDADE, NOTICIAS, URI_NOTICIAS)
+        }
     }
 }
