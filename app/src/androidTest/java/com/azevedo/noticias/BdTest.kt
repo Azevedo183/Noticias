@@ -177,4 +177,35 @@ class BdTest {
         assertEquals(1, registoAlterados)
     }
 
+    @Test
+    fun consegueAlterarNoticia(){
+        val bd = getWritableDatabase()
+
+        val categTec = Categoria("Tecnologia","Notícias sobre inovações tecnológicas, lançamentos de produtos, empresas de tecnologia, aplicativos, gadgets e tendências digitais")
+        inserirCategoria(bd, categTec)
+
+        val categCen = Categoria("Ciência","Notícias sobre avanços científicos, pesquisas, descobertas espaciais, meio ambiente, biologia e outros campos científicos")
+        inserirCategoria(bd, categCen)
+
+        val data = Calendar.getInstance()
+        data.set(2023, 5, 19)
+        val noticia = Noticias("Wall Street fecha em alta graças à tecnologia e inteligência artifical",categTec.id,data)
+        insereNoticia(bd, noticia)
+
+        noticia.idCategoria = categCen.id
+        noticia.titulo = "Português quer ajudar China a procurar vida em Marte a partir de salinas lusófonas"
+        val data_new = Calendar.getInstance()
+        data.set(2023, 5, 14)
+        noticia.data = data_new
+
+        val registoAlterados = Tabela_Noticias(bd).altera(
+            noticia.toContentValues(),
+            "${BaseColumns._ID}=?",
+            arrayOf(noticia.id.toString()),
+        )
+
+        assertEquals(1, registoAlterados)
+
+    }
+
 }
