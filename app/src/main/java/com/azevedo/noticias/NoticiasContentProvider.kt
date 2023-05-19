@@ -6,8 +6,10 @@ import android.database.Cursor
 import android.net.Uri
 
 class NoticiasContentProvider : ContentProvider() {
+    private var bdOpenHelper : BdNoticiasOpenHelper? = null
     override fun onCreate(): Boolean {
-        TODO("Not yet implemented")
+        bdOpenHelper = BdNoticiasOpenHelper(context)
+        return true
     }
 
     override fun query(
