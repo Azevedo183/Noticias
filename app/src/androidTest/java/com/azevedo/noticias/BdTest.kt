@@ -158,6 +158,23 @@ class BdTest {
         assert(cursorTodasNoticias.count > 1)
     }
 
+    @Test
+    fun consegueAlterarCategorias(){
+        val bd = getWritableDatabase()
 
+        val categoria = Categoria("Desporto","Notícias sobre futebol, basquete, tênis, automobilismo, esportes olímpicos e outros eventos esportivos relevantes.")
+        inserirCategoria(bd, categoria)
+
+        categoria.nome = "Saúde"
+        categoria.descricao = "Notícias sobre saúde pública, descobertas científicas, avanços médicos, doenças, cuidados de saúde e bem-estar"
+
+        val registoAlterados = Tabela_Categorias(bd).altera(
+            categoria.toContentVaules(),
+            "${BaseColumns._ID}=?",
+            arrayOf(categoria.id.toString()),
+        )
+
+        assertEquals(1, registoAlterados)
+    }
 
 }
