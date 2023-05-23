@@ -194,9 +194,9 @@ class BdTest {
 
         noticia.idCategoria = categCen.id
         noticia.titulo = "Português quer ajudar China a procurar vida em Marte a partir de salinas lusófonas"
-        val data_new = Calendar.getInstance()
+        val datanew = Calendar.getInstance()
         data.set(2023, 5, 14)
-        noticia.data = data_new
+        noticia.data = datanew
 
         val registoAlterados = Tabela_Noticias(bd).altera(
             noticia.toContentValues(),
