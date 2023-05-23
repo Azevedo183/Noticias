@@ -68,7 +68,17 @@ class NoticiasContentProvider : ContentProvider() {
     }
 
     override fun delete(uri: Uri, selection: String?, selectionArgs: Array<out String>?): Int {
-        TODO("Not yet implemented")
+        val bd = bdOpenHelper!!.writableDatabase
+        val endereco = uriMatcher().match(uri)
+
+        val tabela = when (endereco) {
+            URI_CATEGORIA_ID -> Tabela_Categorias(bd)
+            URI_NOTICIA_ID -> Tabela_Noticias(bd)
+            else -> return 0
+        }
+
+        val id = uri.lastPathSegment!!
+        return tabela.elimina( "${BaseColumns._ID}=?", arrayOf(id))
     }
 
     override fun update(
