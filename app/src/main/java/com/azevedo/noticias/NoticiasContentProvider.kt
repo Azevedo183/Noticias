@@ -47,7 +47,15 @@ class NoticiasContentProvider : ContentProvider() {
     }
 
     override fun getType(uri: Uri): String? {
-        TODO("Not yet implemented")
+        val endereco = uriMatcher().match(uri)
+
+        return when(endereco){
+            URI_CATEGORIAS -> "vnd.android.cursor.dir/$CATEGORIAS"
+            URI_CATEGORIA_ID -> "vnd.android.item/$CATEGORIAS"
+            URI_NOTICIAS -> "vnd.android.cursor.dir/$NOTICIAS"
+            URI_NOTICIA_ID -> "vnd.android.item/$NOTICIAS"
+            else -> null
+        }
     }
 
     override fun insert(uri: Uri, values: ContentValues?): Uri? {
