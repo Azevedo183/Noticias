@@ -77,7 +77,18 @@ class NoticiasContentProvider : ContentProvider() {
         selection: String?,
         selectionArgs: Array<out String>?
     ): Int {
-        TODO()
+        val bd = bdOpenHelper!!.writableDatabase
+        val endereco = uriMatcher().match(uri)
+
+        val tabela = when (endereco) {
+            URI_CATEGORIA_ID -> Tabela_Categorias(bd)
+            URI_NOTICIA_ID -> Tabela_Noticias(bd)
+            else -> return 0
+        }
+
+        val id = uri.lastPathSegment!!
+        return tabela.altera(values!!, "${BaseColumns._ID}=?", arrayOf(id))
+
     }
 
     companion object{
