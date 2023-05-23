@@ -22,7 +22,7 @@
         tools:layout="@layout/fragment_sobre">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            android:id="@+id/action_Sobre_Fragment_to_MenuPrincipal_Fragment"
             app:destination="@id/MenuPrincipal_Fragment" />
     </fragment>
 </navigation>
