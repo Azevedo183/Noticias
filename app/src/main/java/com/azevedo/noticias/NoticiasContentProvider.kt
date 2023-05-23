@@ -51,7 +51,20 @@ class NoticiasContentProvider : ContentProvider() {
     }
 
     override fun insert(uri: Uri, values: ContentValues?): Uri? {
-        TODO("Not yet implemented")
+        val bd = bdOpenHelper!!.writableDatabase
+        val endereco = uriMatcher().match(uri)
+
+        val tabela = when (endereco) {
+            URI_CATEGORIAS -> Tabela_Categorias(bd)
+            URI_NOTICIAS -> Tabela_Noticias(bd)
+            else -> return null
+        }
+
+        val id = tabela.insere(values!!)
+        if (id == -1L){
+            return null
+        }
+            return Uri.withAppendedPath(uri, id.toString())
     }
 
     override fun delete(uri: Uri, selection: String?, selectionArgs: Array<out String>?): Int {
@@ -64,7 +77,7 @@ class NoticiasContentProvider : ContentProvider() {
         selection: String?,
         selectionArgs: Array<out String>?
     ): Int {
-        TODO("Not yet implemented")
+        TODO()
     }
 
     companion object{
