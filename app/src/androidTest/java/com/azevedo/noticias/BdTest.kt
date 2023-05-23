@@ -113,7 +113,7 @@ class BdTest {
         assertEquals(categGuerra, categBD)
 
         val cursorTodasCategorias = tabelaCategorias.consulta(
-            Tabela_Categorias.CAMPOS,
+            Tabela_Categorias. CAMPOS,
             null, null,null,null,
             Tabela_Categorias.CAMPO_NOME
         )
