@@ -34,7 +34,7 @@
         android:label="@string/ListaNoticias_Lable"
         tools:layout="@layout/fragment_lista_noticias_">
         <action
-            android:id="@+id/action_listaNoticias_Fragment_to_MenuPrincipal_Fragment"
+            android:id="@+id/action_ListaNoticias_Fragment_to_MenuPrincipal_Fragment"
             app:destination="@id/MenuPrincipal_Fragment" />
     </fragment>
 </navigation>
