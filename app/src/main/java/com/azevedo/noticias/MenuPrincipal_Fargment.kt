@@ -14,9 +14,6 @@ import com.azevedo.noticias.databinding.FragmentMenuprincipalBinding
 class MenuPrincipal_Fargment : Fragment() {
 
     private var _binding: FragmentMenuprincipalBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
