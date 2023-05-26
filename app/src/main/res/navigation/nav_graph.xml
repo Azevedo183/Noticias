@@ -32,7 +32,7 @@
         android:id="@+id/ListaNoticias_Fragment"
         android:name="com.azevedo.noticias.ListaNoticias_Fragment"
         android:label="@string/ListaNoticias_Lable"
-        tools:layout="@layout/fragment_lista_noticias_">
+        tools:layout="@layout/fragment_lista_noticias">
         <action
             android:id="@+id/action_ListaNoticias_Fragment_to_MenuPrincipal_Fragment"
             app:destination="@id/MenuPrincipal_Fragment" />
