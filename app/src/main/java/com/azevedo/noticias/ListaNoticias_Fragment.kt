@@ -11,6 +11,8 @@ import androidx.loader.content.Loader
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.azevedo.noticias.databinding.FragmentListaNoticiasBinding
 
+private const val ID_LOADER_NOTICIAS = 0
+
 class ListaNoticias_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     private var _binding: FragmentListaNoticiasBinding? = null
     private val binding get() = _binding!!
@@ -34,6 +36,9 @@ class ListaNoticias_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
         val adapterNoticias = AdapterNoticias()
         binding.RecyclerViewNoticias.adapter = adapterNoticias
         binding.RecyclerViewNoticias.layoutManager = LinearLayoutManager(requireContext())
+
+        val loader = LoaderManager.getInstance(this)
+        loader.initLoader(ID_LOADER_NOTICIAS,null, this)
     }
     companion object {
 
