@@ -13,8 +13,8 @@ class AdapterNoticias(val fragment: ListaNoticias_Fragment) : RecyclerView.Adapt
             field = value
             notifyDataSetChanged()
         }
-    inner class ViewHolderNoticias(itemView: View) : ViewHolder(itemView) {
-
+    inner class ViewHolderNoticias(contentor: View) : ViewHolder(contentor) {
+            internal var noticias: Noticias?=null
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderNoticias {
@@ -28,6 +28,7 @@ class AdapterNoticias(val fragment: ListaNoticias_Fragment) : RecyclerView.Adapt
     }
 
     override fun onBindViewHolder(holder: ViewHolderNoticias, position: Int) {
-        TODO("Not yet implemented")
+        cursor!!.move(position)
+        holder.noticias=Noticias.formCursor(cursor!!)
     }
 }
