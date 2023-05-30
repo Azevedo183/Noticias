@@ -3,6 +3,7 @@ package com.azevedo.noticias
 import android.database.Cursor
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 
@@ -14,7 +15,17 @@ class AdapterNoticias(val fragment: ListaNoticias_Fragment) : RecyclerView.Adapt
             notifyDataSetChanged()
         }
     inner class ViewHolderNoticias(contentor: View) : ViewHolder(contentor) {
-            internal var noticias: Noticias?=null
+        private val textViewTitulo = contentor.findViewById<TextView>(R.id.textView_Titulo)
+        private val textViewData = contentor.findViewById<TextView>(R.id.textView_Data)
+        private val textViewCategoria = contentor.findViewById<TextView>(R.id.textView_Categoria)
+
+        internal var noticias: Noticias?=null
+            set(value){
+                field = value
+                textViewTitulo = noticias?.titulo ?: ""
+                textViewData = noticias?.data.toString() ?: ""
+                textViewCategoria = noticias.idCategoria.toString() ?: ""
+            }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderNoticias {
