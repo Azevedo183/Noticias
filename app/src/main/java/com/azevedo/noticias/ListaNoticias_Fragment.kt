@@ -15,6 +15,12 @@ import com.azevedo.noticias.databinding.FragmentSobreBinding
 
 private const val ID_LOADER_NOTICIAS = 0
 
+private val adapterNoticias1: AdapterNoticias
+    get(){
+        val adapterNoticias = AdapterNoticias()
+        return adapterNoticias
+    }
+
 class ListaNoticias_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
     private var _binding: FragmentListaNoticiasBinding? = null
@@ -32,10 +38,12 @@ class ListaNoticias_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
         super.onDestroyView()
         _binding = null
     }
+
+    private val adapterNoticias = AdapterNoticias()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapterNoticias = AdapterNoticias()
+
         binding.RecyclerViewNoticias.adapter = adapterNoticias
         binding.RecyclerViewNoticias.layoutManager = LinearLayoutManager(requireContext())
 
@@ -57,10 +65,10 @@ class ListaNoticias_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
     }
 
     override fun onLoaderReset(loader: Loader<Cursor>) {
-        TODO("Not yet implemented")
+        adapterNoticias.cursor = null
     }
 
     override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
-        TODO("Not yet implemented")
+        adapterNoticias.cursor = data
     }
 }
