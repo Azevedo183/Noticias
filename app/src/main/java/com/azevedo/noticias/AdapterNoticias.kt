@@ -22,7 +22,7 @@ class AdapterNoticias : RecyclerView.Adapter<AdapterNoticias.ViewHolderLivro>() 
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return cursor?.count ?: 0
     }
 
     override fun onBindViewHolder(holder: ViewHolderLivro, position: Int) {
