@@ -27,7 +27,7 @@ class BdTest {
 
     @Before
     fun apagaBD(){
-        getAppContex().deleteDatabase(BdNoticiasOpenHelper.NOME_BASE_DADOS)
+        //getAppContex().deleteDatabase(BdNoticiasOpenHelper.NOME_BASE_DADOS)
     }
 
     private fun getWritableDatabase(): SQLiteDatabase {
