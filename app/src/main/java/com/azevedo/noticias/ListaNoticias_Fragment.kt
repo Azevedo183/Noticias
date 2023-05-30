@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.loader.app.LoaderManager
+import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.azevedo.noticias.databinding.FragmentListaNoticiasBinding
@@ -15,6 +16,7 @@ import com.azevedo.noticias.databinding.FragmentSobreBinding
 private const val ID_LOADER_NOTICIAS = 0
 
 class ListaNoticias_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
+
     private var _binding: FragmentListaNoticiasBinding? = null
     private val binding get() = _binding!!
 
@@ -45,7 +47,13 @@ class ListaNoticias_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
     }
 
     override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
-        TODO("Not yet implemented")
+        return CursorLoader(
+            requireContext(),
+            NoticiasContentProvider.ENDERECO_NOTICIAS,
+            Tabela_Noticias.CAMPOS,
+            null, null,
+            Tabela_Noticias.CAMPO_TITULO
+        )
     }
 
     override fun onLoaderReset(loader: Loader<Cursor>) {

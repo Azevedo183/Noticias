@@ -119,6 +119,10 @@ class NoticiasContentProvider : ContentProvider() {
         private const val URI_NOTICIAS = 200
         private const val URI_NOTICIA_ID = 201
 
+        private  val ENDERECO_BASE = Uri.parse("content://$AUTORIDADE")
+
+        val ENDERECO_CATEGORIA = Uri.withAppendedPath(ENDERECO_BASE, CATEGORIAS)
+        val ENDERECO_NOTICIAS = Uri.withAppendedPath(ENDERECO_BASE, NOTICIAS)
         fun uriMatcher() = UriMatcher(UriMatcher.NO_MATCH).apply {
             addURI(AUTORIDADE, CATEGORIAS, URI_CATEGORIAS)
             addURI(AUTORIDADE, "$CATEGORIAS/#", URI_CATEGORIA_ID)
