@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import java.text.SimpleDateFormat
 
 class AdapterNoticias(val fragment: ListaNoticias_Fragment) : RecyclerView.Adapter<AdapterNoticias.ViewHolderNoticias>() {
 
@@ -23,7 +24,10 @@ class AdapterNoticias(val fragment: ListaNoticias_Fragment) : RecyclerView.Adapt
             set(value){
                 field = value
                 textViewTitulo.text = noticias?.titulo ?: ""
-                textViewData.text = noticias?.data.toString() ?: ""
+                val formatoData = SimpleDateFormat("dd/MM/yyyy")
+                val dataFormatada = noticias?.data?.let { formatoData.format(it.time) } ?: ""
+                textViewData.text = dataFormatada
+                //textViewData.text = noticias?.data.toString() ?: ""
                 textViewCategoria.text = noticias?.idCategoria.toString() ?: ""
             }
     }
