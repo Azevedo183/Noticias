@@ -39,7 +39,7 @@ class AdapterNoticias(val fragment: ListaNoticias_Fragment) : RecyclerView.Adapt
     }
 
     override fun onBindViewHolder(holder: ViewHolderNoticias, position: Int) {
-        cursor!!.move(position)
+        cursor!!.moveToPosition(position)
         holder.noticias=Noticias.formCursor(cursor!!)
     }
 }
