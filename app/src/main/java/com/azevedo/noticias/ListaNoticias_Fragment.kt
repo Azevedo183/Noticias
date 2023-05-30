@@ -11,15 +11,9 @@ import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.azevedo.noticias.databinding.FragmentListaNoticiasBinding
-import com.azevedo.noticias.databinding.FragmentSobreBinding
 
 private const val ID_LOADER_NOTICIAS = 0
 
-private val adapterNoticias1: AdapterNoticias
-    get(){
-        val adapterNoticias = AdapterNoticias()
-        return adapterNoticias
-    }
 
 class ListaNoticias_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
@@ -39,19 +33,16 @@ class ListaNoticias_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
         _binding = null
     }
 
-    private val adapterNoticias = AdapterNoticias()
+    private var adapterNoticias: AdapterNoticias? = null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+        adapterNoticias = AdapterNoticias(this)
         binding.RecyclerViewNoticias.adapter = adapterNoticias
         binding.RecyclerViewNoticias.layoutManager = LinearLayoutManager(requireContext())
 
         val loader = LoaderManager.getInstance(this)
         loader.initLoader(ID_LOADER_NOTICIAS,null, this)
-    }
-    companion object {
-
     }
 
     override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
@@ -65,10 +56,10 @@ class ListaNoticias_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
     }
 
     override fun onLoaderReset(loader: Loader<Cursor>) {
-        adapterNoticias.cursor = null
+        adapterNoticias!!.cursor = null
     }
 
     override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
-        adapterNoticias.cursor = data
+        adapterNoticias!!.cursor = data
     }
 }

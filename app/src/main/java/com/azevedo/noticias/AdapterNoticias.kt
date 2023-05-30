@@ -6,26 +6,28 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 
-class AdapterNoticias : RecyclerView.Adapter<AdapterNoticias.ViewHolderLivro>() {
+class AdapterNoticias(val fragment: ListaNoticias_Fragment) : RecyclerView.Adapter<AdapterNoticias.ViewHolderNoticias>() {
 
     var cursor: Cursor? = null
         set(value) {
             field = value
             notifyDataSetChanged()
         }
-    inner class ViewHolderLivro(itemView: View) : ViewHolder(itemView) {
+    inner class ViewHolderNoticias(itemView: View) : ViewHolder(itemView) {
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderLivro {
-        TODO("Not yet implemented")
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderNoticias {
+        return ViewHolderNoticias(
+            fragment.layoutInflater.inflate(R.layout.item_noticia, parent, false)
+        )
     }
 
     override fun getItemCount(): Int {
         return cursor?.count ?: 0
     }
 
-    override fun onBindViewHolder(holder: ViewHolderLivro, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolderNoticias, position: Int) {
         TODO("Not yet implemented")
     }
 }
