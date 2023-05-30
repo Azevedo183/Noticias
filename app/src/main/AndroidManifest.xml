@@ -26,6 +26,7 @@
             android:authorities="com.azevedo.noticias"
             android:name=".NoticiasContentProvider"
             android:exported="false"
+            />
     </application>
 
 </manifest>

@@ -19,12 +19,12 @@ class AdapterNoticias(val fragment: ListaNoticias_Fragment) : RecyclerView.Adapt
         private val textViewData = contentor.findViewById<TextView>(R.id.textView_Data)
         private val textViewCategoria = contentor.findViewById<TextView>(R.id.textView_Categoria)
 
-        internal var noticias: Noticias?=null
+        internal var noticias: Noticias? = null
             set(value){
                 field = value
-                textViewTitulo = noticias?.titulo ?: ""
-                textViewData = noticias?.data.toString() ?: ""
-                textViewCategoria = noticias.idCategoria.toString() ?: ""
+                textViewTitulo.text = noticias?.titulo ?: ""
+                textViewData.text = noticias?.data.toString() ?: ""
+                textViewCategoria.text = noticias?.idCategoria.toString() ?: ""
             }
     }
 
