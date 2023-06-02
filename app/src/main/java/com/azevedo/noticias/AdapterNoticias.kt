@@ -28,7 +28,7 @@ class AdapterNoticias(val fragment: ListaNoticias_Fragment) : RecyclerView.Adapt
                 val dataFormatada = noticias?.data?.let { formatoData.format(it.time) } ?: ""
                 textViewData.text = dataFormatada
                 //textViewData.text = noticias?.data.toString() ?: ""
-                textViewCategoria.text = noticias?.idCategoria.toString() ?: ""
+                textViewCategoria.text = noticias?.categoria?.nome ?: ""
             }
     }
 

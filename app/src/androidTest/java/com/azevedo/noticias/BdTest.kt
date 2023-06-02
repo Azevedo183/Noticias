@@ -80,12 +80,12 @@ class BdTest {
 
         val data1 = Calendar.getInstance()
         data1.set(2021, 12, 5)
-        val noticia1 = Noticias("Marcelo dissolve assembleia",categoria.id,data1)
+        val noticia1 = Noticias("Marcelo dissolve assembleia",categoria,data1)
         insereNoticia(bd, noticia1)
 
         val data2 = Calendar.getInstance()
         data2.set(2023, 5, 12)
-        val noticia2 = Noticias("Ana Gomes:Este governo também está a fabricar populismos",categoria.id,data2)
+        val noticia2 = Noticias("Ana Gomes:Este governo também está a fabricar populismos",categoria,data2)
         insereNoticia(bd, noticia2)
     }
 
@@ -100,7 +100,10 @@ class BdTest {
         inserirCategoria(bd, categGuerra)
 
         val tabelaCategorias = Tabela_Categorias(bd)
-        val cursor = tabelaCategorias.consulta(Tabela_Categorias.CAMPOS, "${BaseColumns._ID}=?", arrayOf(categGuerra.id.toString()),null,null,null)
+        val cursor = tabelaCategorias.consulta(Tabela_Categorias.CAMPOS,
+            "${BaseColumns._ID}=?",
+            arrayOf(categGuerra.id.toString()),
+            null,null,null)
 
         assert(cursor.moveToNext())
 
@@ -126,17 +129,20 @@ class BdTest {
 
         val data1 = Calendar.getInstance()
         data1.set(2022, 10, 19)
-        val noticia1 = Noticias("Câmara de Lamego reforça programa de incentivo à natalidade",categoria.id,data1)
+        val noticia1 = Noticias("Câmara de Lamego reforça programa de incentivo à natalidade",categoria,data1)
         insereNoticia(bd, noticia1)
 
         val data2 = Calendar.getInstance()
         data2.set(2022, 10, 12)
-        val noticia2 = Noticias("Lamego vai ter residência universitaria com 46 camas",categoria.id,data2)
+        val noticia2 = Noticias("Lamego vai ter residência universitaria com 46 camas",categoria,data2)
         insereNoticia(bd, noticia2)
 
         val tabelaNoticias = Tabela_Noticias(bd)
 
-        val cursor = tabelaNoticias.consulta(Tabela_Noticias.CAMPOS, "${BaseColumns._ID}=?",arrayOf(noticia1.id.toString()),
+        val cursor = tabelaNoticias.consulta(
+            Tabela_Noticias.CAMPOS,
+            "${Tabela_Noticias.CAMPO_ID}=?",
+            arrayOf(noticia1.id.toString()),
             null,null,null)
 
         assert(cursor.moveToNext())
@@ -185,10 +191,10 @@ class BdTest {
 
         val data = Calendar.getInstance()
         data.set(2023, 5, 19)
-        val noticia = Noticias("Wall Street fecha em alta graças à tecnologia e inteligência artifical",categTec.id,data)
+        val noticia = Noticias("Wall Street fecha em alta graças à tecnologia e inteligência artifical",categTec,data)
         insereNoticia(bd, noticia)
 
-        noticia.idCategoria = categCen.id
+        noticia.categoria = categCen
         noticia.titulo = "Português quer ajudar China a procurar vida em Marte a partir de salinas lusófonas"
         val datanew = Calendar.getInstance()
         data.set(2023, 5, 14)
@@ -228,7 +234,7 @@ class BdTest {
 
         val data = Calendar.getInstance()
         data.set(2023, 5, 16)
-        val noticia = Noticias("Ordem para marcação de faltas injustificadas? Não é verdade",categTec.id,data)
+        val noticia = Noticias("Ordem para marcação de faltas injustificadas? Não é verdade",categTec,data)
         insereNoticia(bd, noticia)
 
 

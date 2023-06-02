@@ -11,7 +11,13 @@ abstract class TabelaBD(val db: SQLiteDatabase, val nome: String) {
     fun insere(valores: ContentValues) =
         db.insert(nome, null, valores)
 
-    fun consulta(colunas: Array<String>, selecao: String?, argsSelecao: Array<String>?, groupBy: String?, having: String?, orderBy: String?)
+    open fun consulta(
+        colunas: Array<String>,
+        selecao: String?,
+        argsSelecao: Array<String>?,
+        groupBy: String?,
+        having: String?,
+        orderBy: String?)
         : Cursor = db.query(nome, colunas, selecao, argsSelecao, groupBy, having, orderBy)
 
 

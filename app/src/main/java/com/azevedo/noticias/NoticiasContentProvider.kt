@@ -51,9 +51,9 @@ class NoticiasContentProvider : ContentProvider() {
 
         return when(endereco){
             URI_CATEGORIAS -> "vnd.android.cursor.dir/$CATEGORIAS"
-            URI_CATEGORIA_ID -> "vnd.android.item/$CATEGORIAS"
+            URI_CATEGORIA_ID -> "vnd.android.cursor.item/$CATEGORIAS"
             URI_NOTICIAS -> "vnd.android.cursor.dir/$NOTICIAS"
-            URI_NOTICIA_ID -> "vnd.android.item/$NOTICIAS"
+            URI_NOTICIA_ID -> "vnd.android.cursor.item/$NOTICIAS"
             else -> null
         }
     }
