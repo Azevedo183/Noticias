@@ -20,6 +20,13 @@ class AdapterNoticias(val fragment: ListaNoticias_Fragment) : RecyclerView.Adapt
         private val textViewData = contentor.findViewById<TextView>(R.id.textView_Data)
         private val textViewCategoria = contentor.findViewById<TextView>(R.id.textView_Categoria)
 
+        init {
+            contentor.setOnClickListener{
+                viewHolderSeleccionado?.desSeleciona()
+                seleciona()
+            }
+        }
+
         internal var noticias: Noticias? = null
             set(value){
                 field = value
@@ -30,8 +37,18 @@ class AdapterNoticias(val fragment: ListaNoticias_Fragment) : RecyclerView.Adapt
                 //textViewData.text = noticias?.data.toString() ?: ""
                 textViewCategoria.text = noticias?.categoria?.nome ?: ""
             }
+
+        fun seleciona(){
+            viewHolderSeleccionado = this
+            itemView.setBackgroundResource(R.color.item_selecionado)
+        }
+
+        fun desSeleciona(){
+            itemView.setBackgroundResource(android.R.color.white)
+        }
     }
 
+    private var viewHolderSeleccionado : ViewHolderNoticias? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderNoticias {
         return ViewHolderNoticias(
             fragment.layoutInflater.inflate(R.layout.item_noticia, parent, false)
