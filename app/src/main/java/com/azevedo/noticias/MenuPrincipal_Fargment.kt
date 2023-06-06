@@ -36,6 +36,9 @@ class MenuPrincipal_Fargment : Fragment() {
         binding.buttonNoticias.setOnClickListener {
             findNavController().navigate(R.id.action_MenuPrincipal_Fragment_to_ListaNoticias_Fragment)
         }
+
+        val activity = activity as MainActivity
+        activity.idMenuAtual = R.menu.menu_main
     }
 
     override fun onDestroyView() {
