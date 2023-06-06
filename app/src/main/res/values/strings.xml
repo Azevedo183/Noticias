@@ -16,4 +16,5 @@
     <string name="Adicionar">Adicionar</string>
     <string name="Editar">Editar</string>
     <string name="Eliminar">Eliminar</string>
+    <string name="nova_noticia_lable">Nova Noticia</string>
 </resources>
