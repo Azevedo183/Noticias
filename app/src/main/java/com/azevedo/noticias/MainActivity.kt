@@ -17,15 +17,15 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
-    var idMenuAtual : Int = R.menu.menu_main
-        set(value){
-            if(value != field){
+    var idMenuAtual: Int = R.menu.menu_main
+        set(value) {
+            if (value != field) {
                 field = value
                 invalidateOptionsMenu()
             }
         }
 
-    var fragment : Fragment? = null
+    var fragment: Fragment? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
@@ -51,15 +51,24 @@ class MainActivity : AppCompatActivity() {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
-            R.id.action_settings -> true
-            else -> super.onOptionsItemSelected(item)
+
+            if(item.itemId == R.id.action_settings){
+                return true
+            }
+
+            val opcaoProcessada = when (fragment){
+                is ListaNoticias_Fragment -> (fragment as ListaNoticias_Fragment).processaOpcaoMenu(item)
+                else -> false
+            }
+            return if (opcaoProcessada){
+                true
+            }else{
+                super.onOptionsItemSelected(item)
+            }
+        }
+        override fun onSupportNavigateUp(): Boolean {
+            val navController = findNavController(R.id.nav_host_fragment_content_main)
+            return navController.navigateUp(appBarConfiguration)
+                    || super.onSupportNavigateUp()
         }
     }
-
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
-        return navController.navigateUp(appBarConfiguration)
-                || super.onSupportNavigateUp()
-    }
-}

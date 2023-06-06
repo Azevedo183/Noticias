@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.loader.app.LoaderManager
@@ -71,5 +72,37 @@ class ListaNoticias_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
     override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
         adapterNoticias!!.cursor = data
     }
+
+    fun processaOpcaoMenu(item: MenuItem) : Boolean{
+        return when (item.itemId) {
+            R.id.action_adicionar -> {
+                adicionaNoticia()
+                true
+            }
+            R.id.action_editar -> {
+                editarNoticia()
+                true
+            }
+            R.id.action_eliminar -> {
+                eliminarNoticia()
+                true
+            }
+            else -> false
+        }
+    }
+
+
+
+    private fun adicionaNoticia() {
+        TODO("Not yet implemented")
+    }
+    private fun editarNoticia() {
+        TODO("Not yet implemented")
+    }
+
+    private fun eliminarNoticia() {
+        TODO("Not yet implemented")
+    }
+
 
 }
