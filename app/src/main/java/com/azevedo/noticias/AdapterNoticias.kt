@@ -40,6 +40,7 @@ class AdapterNoticias(val fragment: ListaNoticias_Fragment) : RecyclerView.Adapt
 
         fun seleciona(){
             viewHolderSeleccionado = this
+            fragment.noticiaSelecionado = noticias
             itemView.setBackgroundResource(R.color.item_selecionado)
         }
 

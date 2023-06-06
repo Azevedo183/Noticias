@@ -20,6 +20,8 @@ class ListaNoticias_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
     private var _binding: FragmentListaNoticiasBinding? = null
     private val binding get() = _binding!!
 
+    var noticiaSelecionado : Noticias? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
