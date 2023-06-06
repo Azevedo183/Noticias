@@ -35,6 +35,10 @@ class Sobre_Fragment : Fragment() {
         binding.buttonSecond.setOnClickListener {
             findNavController().navigate(R.id.action_Sobre_Fragment_to_MenuPrincipal_Fragment)
         }
+
+        val activity = activity as MainActivity
+        activity.fragment = this
+        activity.idMenuAtual = R.menu.menu_main
     }
 
     override fun onDestroyView() {
