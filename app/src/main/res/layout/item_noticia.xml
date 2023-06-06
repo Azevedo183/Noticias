@@ -24,7 +24,8 @@
         android:text="Wall Street fecha em alta graças à tecnologia e inteligência artifical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="#9f5afd"/>
 
     <TextView
         android:id="@+id/textView_Categoria"

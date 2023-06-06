@@ -24,6 +24,14 @@ class ListaNoticias_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
 
 
     var noticiaSelecionado : Noticias? = null
+        set(value){
+            field = value
+
+            val mostrarEliminarAlterar = (value != null)
+            val activity = activity as MainActivity
+            activity.mostraBotaoMenu(R.id.action_editar,mostrarEliminarAlterar)
+            activity.mostraBotaoMenu(R.id.action_eliminar,mostrarEliminarAlterar)
+        }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
