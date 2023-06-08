@@ -3,15 +3,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="8dp"
     android:orientation="vertical"
-    tools:context=".NovaNoticia_Fragment" >
+    tools:context=".NovaNoticia_Fragment">
 
-    <EditText
-        android:id="@+id/editTextText"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Name" />
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/insertTextTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/Titulo"
+            android:textColorHint="#546E7A" />
+
+        <TextView
+            android:id="@+id/textViewCategoria"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1"
+            android:text="@string/Categoria" />
+
+        <Spinner
+            android:id="@+id/Categorias"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:minHeight="48dp" />
+
+        <CalendarView
+            android:id="@+id/calendarInserir"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
 </LinearLayout>
