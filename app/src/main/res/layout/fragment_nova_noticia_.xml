@@ -39,12 +39,18 @@
             android:layout_marginTop="8dp"
             android:minHeight="48dp" />
 
-        <CalendarView
-            android:id="@+id/calendarInserir"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_weight="1" />
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/calendarInserir"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/Data"
+                android:inputType="datetime|date" />
+        </com.google.android.material.textfield.TextInputLayout>
 
     </com.google.android.material.textfield.TextInputLayout>
 

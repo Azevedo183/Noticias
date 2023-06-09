@@ -3,18 +3,24 @@ package com.azevedo.noticias
 
 import android.database.Cursor
 import android.os.Bundle
+import android.provider.ContactsContract.Data
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SimpleCursorAdapter
+import android.widget.Spinner
 import android.widget.SpinnerAdapter
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
 import com.azevedo.noticias.databinding.FragmentNovaNoticiaBinding
+import java.lang.Exception
+import java.text.SimpleDateFormat
+import java.util.Calendar
 
 
 private const val ID_LOADER_CATEGORIAS = 0
@@ -37,7 +43,6 @@ class NovaNoticia_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.SpinnerCategorias.adapter = SimpleCursorAdapter()
 
         val loader = LoaderManager.getInstance(this)
         loader.initLoader(ID_LOADER_CATEGORIAS,null, this)
@@ -71,7 +76,44 @@ class NovaNoticia_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     }
 
     private fun guardar() {
-        TODO("Not yet implemented")
+        val titulo = binding.insertTextTitulo.text.toString()
+        if (titulo.isBlank()) {
+            binding.insertTextTitulo.error = getString(R.string.titulo_obrigatorio)
+            binding.insertTextTitulo.requestFocus()
+            return
+        }
+
+        val categoria = binding.SpinnerCategorias.selectedItemId
+        if (categoria == Spinner.INVALID_ROW_ID) {
+            binding.textViewCategoria.error = getString(R.string.categoria_obrigatoria)
+            binding.SpinnerCategorias.requestFocus()
+            return
+        }
+
+        val data : Data
+        val df = SimpleDateFormat("dd-MM-yyyy")
+        try {
+            data = df.parse(binding.calendarInserir.text.toString())
+        }catch (e: Exception){
+            binding.calendarInserir.error = getString(R.string.data_invalida)
+            binding.calendarInserir.requestFocus()
+            return
+        }
+
+        val calendario = Calendar.getInstance()
+        calendario.time = data
+        val noticia = Noticias(titulo, Categoria("?","?",categoria), calendario)
+
+        requireActivity().contentResolver.insert(NoticiasContentProvider.ENDERECO_NOTICIAS, noticia.toContentValues())
+
+        if (id != null){
+            binding.insertTextTitulo.error = getString(R.string.n_o_foi_possivel_guardar_a_noticia)
+            return
+        }
+
+
+            Toast.makeText(requireContext(), getString(R.string.noticia_guardada_com_sucesso), Toast.LENGTH_LONG).show()
+            cancelar()
     }
 
     override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
@@ -94,13 +136,15 @@ class NovaNoticia_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
             binding.SpinnerCategorias.adapter = null
             return
         }
-        binding.SpinnerCategorias.adapter = SimpleCursorAdapter{
+        binding.SpinnerCategorias.adapter = SimpleCursorAdapter(
             requireContext(),
             android.R.layout.simple_list_item_1,
             data,
             arrayOf(Tabela_Categorias.CAMPO_NOME),
             intArrayOf(android.R.id.text1),
             0
-        }
+        )
     }
+
+
 }
