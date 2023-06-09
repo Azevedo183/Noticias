@@ -107,7 +107,7 @@ class ListaCategorias_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Curso
     }
 
     private fun adicionaCategoria() {
-        TODO("findNavController().navigate(R.id.action_ListaNoticias_Fragment_to_novaNoticia_Fragment)")
+        findNavController().navigate(R.id.action_listaCategorias_Fragment_to_novaCategoria_Fragment)
     }
 
 

@@ -64,7 +64,7 @@
             android:id="@+id/action_listaCategorias_Fragment_to_MenuPrincipal_Fragment"
             app:destination="@id/MenuPrincipal_Fragment" />
         <action
-            android:id="@+id/action_listaCategorias_Fragment_to_novaCategoria_Fragment3"
+            android:id="@+id/action_listaCategorias_Fragment_to_novaCategoria_Fragment"
             app:destination="@id/novaCategoria_Fragment" />
     </fragment>
     <fragment
