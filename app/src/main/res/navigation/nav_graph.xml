@@ -42,6 +42,9 @@
         <action
             android:id="@+id/action_ListaNoticias_Fragment_to_novaNoticia_Fragment"
             app:destination="@id/novaNoticia_Fragment" />
+        <action
+            android:id="@+id/action_ListaNoticias_Fragment_to_novaNoticia_Fragment2"
+            app:destination="@id/novaNoticia_Fragment" />
     </fragment>
     <fragment
         android:id="@+id/novaNoticia_Fragment"
@@ -60,5 +63,17 @@
         <action
             android:id="@+id/action_listaCategorias_Fragment_to_MenuPrincipal_Fragment"
             app:destination="@id/MenuPrincipal_Fragment" />
+        <action
+            android:id="@+id/action_listaCategorias_Fragment_to_novaCategoria_Fragment3"
+            app:destination="@id/novaCategoria_Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/novaCategoria_Fragment"
+        android:name="com.azevedo.noticias.NovaCategoria_Fragment"
+        android:label="fragment_nova_categoria_"
+        tools:layout="@layout/fragment_nova_categoria_" >
+        <action
+            android:id="@+id/action_novaCategoria_Fragment_to_listaCategorias_Fragment"
+            app:destination="@id/listaCategorias_Fragment" />
     </fragment>
 </navigation>
