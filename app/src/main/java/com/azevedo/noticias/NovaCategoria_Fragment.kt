@@ -40,7 +40,9 @@ class NovaCategoria_Fragment : Fragment() {
         _binding = null
     }
 
-
+    private fun voltarlistaCategorias(){
+        findNavController().navigate(R.id.action_novaCategoria_Fragment_to_listaCategorias_Fragment)
+    }
 
     fun processaOpcaoMenu(item: MenuItem): Boolean {
         return when (item.itemId) {
@@ -59,7 +61,5 @@ class NovaCategoria_Fragment : Fragment() {
     private fun guardarCategoria() {
         TODO("Not yet implemented")
     }
-    private fun voltarlistaCategorias(){
-        findNavController().navigate(R.id.action_novaCategoria_Fragment_to_listaCategorias_Fragment)
-    }
+
 }
