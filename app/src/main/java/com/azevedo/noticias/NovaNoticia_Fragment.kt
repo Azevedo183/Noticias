@@ -28,7 +28,6 @@ private const val ID_LOADER_CATEGORIAS = 0
 
 class NovaNoticia_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     private var _binding: FragmentNovaNoticiaBinding? = null
-
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -69,15 +68,11 @@ class NovaNoticia_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
                 true
             }
             R.id.action_cancelar -> {
-                cancelar()
+                voltarlistaNoticias()
                 true
             }
             else -> false
         }
-    }
-
-    private fun cancelar() {
-        voltarlistaNoticias()
     }
 
     private fun guardar() {
