@@ -27,4 +27,5 @@
     <string name="data_invalida">Data Invalida</string>
     <string name="n_o_foi_possivel_guardar_a_noticia">Não foi possivel guardar a noticia</string>
     <string name="noticia_guardada_com_sucesso">Noticia Guardada com sucesso</string>
+    <string name="ListaCategoria_Lable">Categoria</string>
 </resources>
