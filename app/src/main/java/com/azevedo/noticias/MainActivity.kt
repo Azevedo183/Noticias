@@ -57,6 +57,7 @@ class MainActivity : AppCompatActivity() {
             val opcaoProcessada = when (fragment){
                 is ListaNoticias_Fragment -> (fragment as ListaNoticias_Fragment).processaOpcaoMenu(item)
                 is NovaNoticia_Fragment -> (fragment as NovaNoticia_Fragment).processaOpcaoMenu(item)
+                is ListaCategorias_Fragment -> (fragment as ListaCategorias_Fragment).processaOpcaoMenu(item)
                 else -> false
             }
             return if (opcaoProcessada){
