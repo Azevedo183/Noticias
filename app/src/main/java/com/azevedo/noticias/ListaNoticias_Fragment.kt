@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.azevedo.noticias.databinding.FragmentListaNoticiasBinding
 
@@ -102,7 +103,8 @@ class ListaNoticias_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
 
 
     private fun adicionaNoticia() {
-        TODO("Not yet implemented")
+            findNavController().navigate(R.id.action_ListaNoticias_Fragment_to_novaNoticia_Fragment)
+
     }
     private fun editarNoticia() {
         TODO("Not yet implemented")

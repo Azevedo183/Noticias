@@ -19,4 +19,6 @@
     <string name="nova_noticia_lable">Nova Noticia</string>
     <string name="Titulo">Título</string>
     <string name="Categoria">Categoria</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="acrion_guardar">Guardar</string>
 </resources>

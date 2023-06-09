@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_guardar"
+        android:icon="@android:drawable/ic_menu_save"
+        android:title="@string/acrion_guardar" />
+    <item
+        android:id="@+id/action_cancelar"
+        android:icon="@android:drawable/ic_menu_close_clear_cancel"
+        android:title="@string/cancelar" />
+</menu>
