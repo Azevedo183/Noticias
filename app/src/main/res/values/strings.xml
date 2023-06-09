@@ -30,4 +30,9 @@
     <string name="ListaCategoria_Lable">Categoria</string>
     <string name="Nome_Categoria">Nome</string>
     <string name="descricao_categoria">Descrição</string>
+    <string name="nomeC_obrigatorio">Nome Obrigatorio</string>
+    <string name="descricao_obrigatoria">Descrição Obrigatoria</string>
+    <string name="imposivel_guardar_categoria">Imposivel guardar categoria</string>
+    <string name="categoria_saved">Categoria guardada com sucesso</string>
+    <string name="NovaCategoria_Lable">Nova Categoria</string>
 </resources>

@@ -58,7 +58,7 @@
     <fragment
         android:id="@+id/listaCategorias_Fragment"
         android:name="com.azevedo.noticias.ListaCategorias_Fragment"
-        android:label="@string/ListaCategoria_Lable"
+        android:label="@string/NovaCategoria_Lable"
         tools:layout="@layout/fragment_lista_categorias_">
         <action
             android:id="@+id/action_listaCategorias_Fragment_to_MenuPrincipal_Fragment"

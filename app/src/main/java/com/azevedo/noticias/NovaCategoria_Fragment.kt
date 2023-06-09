@@ -6,9 +6,15 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Spinner
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.azevedo.noticias.databinding.FragmentNovaCategoriaBinding
 import com.azevedo.noticias.databinding.FragmentSobreBinding
+import java.lang.Exception
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Date
 
 class NovaCategoria_Fragment : Fragment() {
 
@@ -59,7 +65,32 @@ class NovaCategoria_Fragment : Fragment() {
     }
 
     private fun guardarCategoria() {
-        TODO("Not yet implemented")
+        val nome = binding.editTextNomeCategoria.text.toString()
+        if (nome.isBlank()) {
+            binding.editTextNomeCategoria.error = getString(R.string.nomeC_obrigatorio)
+            binding.editTextNomeCategoria.requestFocus()
+            return
+        }
+
+        val descricao = binding.editTextDescricaoCategoria.text.toString()
+        if (descricao.isBlank()) {
+            binding.editTextDescricaoCategoria.error = getString(R.string.descricao_obrigatoria)
+            binding.editTextDescricaoCategoria.requestFocus()
+            return
+        }
+
+        val categoria = Categoria(nome, descricao)
+
+        requireActivity().contentResolver.insert(NoticiasContentProvider.ENDERECO_CATEGORIA, categoria.toContentVaules())
+
+        if (id == null){
+            binding.editTextNomeCategoria.error = getString(R.string.imposivel_guardar_categoria)
+            return
+        }
+
+
+        Toast.makeText(requireContext(), getString(R.string.categoria_saved), Toast.LENGTH_LONG).show()
+        voltarlistaCategorias()
     }
 
 }
