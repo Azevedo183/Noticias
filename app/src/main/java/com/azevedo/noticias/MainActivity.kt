@@ -43,16 +43,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(idMenuAtual, menu)
         this.menu = menu
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
 
             if(item.itemId == R.id.action_settings){
                 return true
@@ -60,6 +56,7 @@ class MainActivity : AppCompatActivity() {
 
             val opcaoProcessada = when (fragment){
                 is ListaNoticias_Fragment -> (fragment as ListaNoticias_Fragment).processaOpcaoMenu(item)
+                is NovaNoticia_Fragment -> (fragment as NovaNoticia_Fragment).processaOpcaoMenu(item)
                 else -> false
             }
             return if (opcaoProcessada){

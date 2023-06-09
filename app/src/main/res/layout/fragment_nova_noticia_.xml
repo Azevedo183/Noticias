@@ -33,7 +33,7 @@
             android:text="@string/Categoria" />
 
         <Spinner
-            android:id="@+id/Categorias"
+            android:id="@+id/SpinnerCategorias"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
