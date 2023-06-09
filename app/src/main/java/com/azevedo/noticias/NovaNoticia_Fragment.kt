@@ -21,6 +21,7 @@ import com.azevedo.noticias.databinding.FragmentNovaNoticiaBinding
 import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Date
 
 
 private const val ID_LOADER_CATEGORIAS = 0
@@ -57,6 +58,10 @@ class NovaNoticia_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         _binding = null
     }
 
+    private fun voltarlistaNoticias(){
+        findNavController().navigate(R.id.action_novaNoticia_Fragment_to_ListaNoticias_Fragment)
+    }
+
     fun processaOpcaoMenu(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_guardar -> {
@@ -72,7 +77,7 @@ class NovaNoticia_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     }
 
     private fun cancelar() {
-        findNavController().navigate(R.id.action_novaNoticia_Fragment_to_ListaNoticias_Fragment)
+        voltarlistaNoticias()
     }
 
     private fun guardar() {
@@ -90,13 +95,13 @@ class NovaNoticia_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
             return
         }
 
-        val data : Data
+        val data: Date
         val df = SimpleDateFormat("dd-MM-yyyy")
         try {
-            data = df.parse(binding.calendarInserir.text.toString())
-        }catch (e: Exception){
-            binding.calendarInserir.error = getString(R.string.data_invalida)
-            binding.calendarInserir.requestFocus()
+            data = df.parse(binding.editTextData.text.toString())
+        } catch (e: Exception) {
+            binding.editTextData.error = getString(R.string.data_invalida)
+            binding.editTextData.requestFocus()
             return
         }
 
@@ -106,14 +111,14 @@ class NovaNoticia_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
         requireActivity().contentResolver.insert(NoticiasContentProvider.ENDERECO_NOTICIAS, noticia.toContentValues())
 
-        if (id != null){
+        if (id == null){
             binding.insertTextTitulo.error = getString(R.string.n_o_foi_possivel_guardar_a_noticia)
             return
         }
 
 
             Toast.makeText(requireContext(), getString(R.string.noticia_guardada_com_sucesso), Toast.LENGTH_LONG).show()
-            cancelar()
+            voltarlistaNoticias()
     }
 
     override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
