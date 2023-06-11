@@ -58,7 +58,7 @@
     <fragment
         android:id="@+id/listaCategorias_Fragment"
         android:name="com.azevedo.noticias.ListaCategorias_Fragment"
-        android:label="@string/NovaCategoria_Lable"
+        android:label="@string/ListaCategoria_Lable"
         tools:layout="@layout/fragment_lista_categorias_">
         <action
             android:id="@+id/action_listaCategorias_Fragment_to_MenuPrincipal_Fragment"
@@ -70,8 +70,8 @@
     <fragment
         android:id="@+id/novaCategoria_Fragment"
         android:name="com.azevedo.noticias.NovaCategoria_Fragment"
-        android:label="fragment_nova_categoria_"
-        tools:layout="@layout/fragment_nova_categoria_" >
+        android:label="@string/NovaCategoria_Lable"
+        tools:layout="@layout/fragment_nova_categoria_">
         <action
             android:id="@+id/action_novaCategoria_Fragment_to_listaCategorias_Fragment"
             app:destination="@id/listaCategorias_Fragment" />
