@@ -35,4 +35,5 @@
     <string name="imposivel_guardar_categoria">Imposivel guardar categoria</string>
     <string name="categoria_saved">Categoria guardada com sucesso</string>
     <string name="NovaCategoria_Lable">Nova Categoria</string>
+    <string name="Eliminar_Label">Eliminar Noticia</string>
 </resources>
