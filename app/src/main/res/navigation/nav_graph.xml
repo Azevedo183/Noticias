@@ -45,6 +45,9 @@
         <action
             android:id="@+id/action_ListaNoticias_Fragment_to_novaNoticia_Fragment2"
             app:destination="@id/novaNoticia_Fragment" />
+        <action
+            android:id="@+id/action_ListaNoticias_Fragment_to_eleminarNoticia_Fragmento"
+            app:destination="@id/eleminarNoticia_Fragmento" />
     </fragment>
     <fragment
         android:id="@+id/novaNoticia_Fragment"
@@ -66,9 +69,6 @@
         <action
             android:id="@+id/action_listaCategorias_Fragment_to_novaCategoria_Fragment"
             app:destination="@id/novaCategoria_Fragment" />
-        <action
-            android:id="@+id/action_listaCategorias_Fragment_to_eleminarNoticia_Fragmento"
-            app:destination="@id/eleminarNoticia_Fragmento" />
     </fragment>
     <fragment
         android:id="@+id/novaCategoria_Fragment"
@@ -85,7 +85,7 @@
         android:label="@string/Eliminar_Label"
         tools:layout="@layout/fragment_eleminar_noticia__fragmento">
         <action
-            android:id="@+id/action_eleminarNoticia_Fragmento_to_listaCategorias_Fragment"
-            app:destination="@id/listaCategorias_Fragment" />
+            android:id="@+id/action_eleminarNoticia_Fragmento_to_ListaNoticias_Fragment"
+            app:destination="@id/ListaNoticias_Fragment" />
     </fragment>
 </navigation>

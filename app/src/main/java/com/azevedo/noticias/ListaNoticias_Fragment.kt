@@ -111,7 +111,7 @@ class ListaNoticias_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
     }
 
     private fun eliminarNoticia() {
-        TODO("Not yet implemented")
+        findNavController().navigate(R.id.action_ListaNoticias_Fragment_to_eleminarNoticia_Fragmento)
     }
 
 

@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import java.text.SimpleDateFormat
 
 class AdapterCategorias(val fragment: ListaCategorias_Fragment):  RecyclerView.Adapter<AdapterCategorias.ViewHolderCategorias>() {
     var cursor: Cursor? = null

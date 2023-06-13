@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Noticias</string>
     <string name="action_settings">Settings</string>
-    <!-- Strings used for fragments for navigation -->
     <string name="MenuPrincipal_fragment_label">Menu Principal</string>
     <string name="Sobre_fragment_label">Sobre</string>
     <string name="next">Next</string>
@@ -15,7 +14,6 @@
     <string name="ListaNoticias_Lable">Noticias</string>
     <string name="Adicionar">Adicionar</string>
     <string name="Editar">Editar</string>
-    <string name="Eliminar">Eliminar</string>
     <string name="nova_noticia_lable">Nova Noticia</string>
     <string name="Titulo">Título</string>
     <string name="Categoria">Categoria</string>
@@ -36,4 +34,5 @@
     <string name="categoria_saved">Categoria guardada com sucesso</string>
     <string name="NovaCategoria_Lable">Nova Categoria</string>
     <string name="Eliminar_Label">Eliminar Noticia</string>
+    <string name="Eliminar">Eliminar</string>
 </resources>
