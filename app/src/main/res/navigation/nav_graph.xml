@@ -81,7 +81,7 @@
     </fragment>
     <fragment
         android:id="@+id/eleminarNoticia_Fragmento"
-        android:name="com.azevedo.noticias.EleminarNoticia_Fragmento"
+        android:name="com.azevedo.noticias.EliminarNoticia_Fragmento"
         android:label="@string/Eliminar_Label"
         tools:layout="@layout/fragment_eleminar_noticia__fragmento">
         <action
