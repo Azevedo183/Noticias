@@ -88,4 +88,7 @@
             android:id="@+id/action_eleminarNoticia_Fragmento_to_ListaNoticias_Fragment"
             app:destination="@id/ListaNoticias_Fragment" />
     </fragment>
+    <argument
+        android:name="noticia"
+        app:argType="com.azevedo.noticias.Noticias" />
 </navigation>

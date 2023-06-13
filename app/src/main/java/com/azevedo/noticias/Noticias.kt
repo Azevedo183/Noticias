@@ -3,13 +3,14 @@ package com.azevedo.noticias
 import android.content.ContentValues
 import android.database.Cursor
 import android.provider.BaseColumns
+import java.io.Serializable
 import java.util.Calendar
 
 data class Noticias(
     var titulo: String,
     var categoria: Categoria,
     var data: Calendar,
-    var id: Long = -1) {
+    var id: Long = -1) : Serializable {
 
     fun toContentValues() : ContentValues{
         val valores = ContentValues()
