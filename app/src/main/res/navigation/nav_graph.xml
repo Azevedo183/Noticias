@@ -50,7 +50,7 @@
         android:id="@+id/EditarNoticia_Fragment"
         android:name="com.azevedo.noticias.EditarNoticia_Fragment"
         android:label="@string/nova_noticia_lable"
-        tools:layout="@layout/fragment_nova_noticia_">
+        tools:layout="@layout/fragment_editar_noticia_">
         <argument
             android:name="noticias"
             app:argType="com.azevedo.noticias.Noticias"
@@ -84,7 +84,7 @@
         android:id="@+id/eliminarNoticia_Fragmento"
         android:name="com.azevedo.noticias.EliminarNoticia_Fragmento"
         android:label="@string/Eliminar_Label"
-        tools:layout="@layout/fragment_eleminar_noticia__fragmento">
+        tools:layout="@layout/fragment_eliminar_noticia__fragmento">
         <action
             android:id="@+id/action_eliminarNoticia_Fragmento_to_ListaNoticias_Fragment"
             app:destination="@id/ListaNoticias_Fragment" />

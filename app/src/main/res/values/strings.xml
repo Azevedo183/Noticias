@@ -21,7 +21,7 @@
     <string name="acrion_guardar">Guardar</string>
     <string name="titulo_obrigatorio">Titulo Obrigatorio\n</string>
     <string name="categoria_obrigatoria">Categoria Obrigatoria</string>
-    <string name="data">Data(dd-mm-aaaa)</string>
+    <string name="data">Data</string>
     <string name="data_invalida">Data Invalida</string>
     <string name="n_o_foi_possivel_guardar_a_noticia">Não foi possivel guardar a noticia</string>
     <string name="noticia_guardada_com_sucesso">Noticia Guardada com sucesso</string>

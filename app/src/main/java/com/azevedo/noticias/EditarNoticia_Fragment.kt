@@ -16,19 +16,20 @@ import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
-import com.azevedo.noticias.databinding.FragmentNovaNoticiaBinding
 import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 import android.text.format.DateFormat
+import com.azevedo.noticias.databinding.FragmentEditarNoticiaBinding
 
 
 private const val ID_LOADER_CATEGORIAS = 0
 
 class EditarNoticia_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     private var noticias: Noticias?= null
-    private var _binding: FragmentNovaNoticiaBinding? = null
+    private var _binding: FragmentEditarNoticiaBinding? = null
+    private var dataNoticia : Calendar? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -36,7 +37,7 @@ class EditarNoticia_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentNovaNoticiaBinding.inflate(inflater, container, false)
+        _binding = FragmentEditarNoticiaBinding.inflate(inflater, container, false)
         return binding.root
 
     }
@@ -44,6 +45,10 @@ class EditarNoticia_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.calendarViewDataNoticia.setOnDateChangeListener { calendarView, year, month, dayOfMonth ->
+            if (dataNoticia == null) dataNoticia = Calendar.getInstance()
+            dataNoticia!!.set(year, month, dayOfMonth)
+        }
 
         val loader = LoaderManager.getInstance(this)
         loader.initLoader(ID_LOADER_CATEGORIAS,null, this)
@@ -58,7 +63,8 @@ class EditarNoticia_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
             activity.atualizaTitulo(R.string.editar_label)
 
             binding.insertTextTitulo.setText(noticia.titulo)
-            binding.editTextData.setText(DateFormat.format("dd-MM-yyyy", noticia.data))
+            dataNoticia = noticia.data
+            binding.calendarViewDataNoticia.date = dataNoticia!!.timeInMillis
         }else{
             activity.atualizaTitulo(R.string.nova_noticia_lable)
         }
@@ -104,31 +110,21 @@ class EditarNoticia_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
             return
         }
 
-        val data: Date?
-        val df = SimpleDateFormat("dd-MM-yyyy")
-        try {
-            data = df.parse(binding.editTextData.text.toString())
-        } catch (e: Exception) {
-            binding.editTextData.error = getString(R.string.data_invalida)
-            binding.editTextData.requestFocus()
-            return
-        }
 
-        val calendario = Calendar.getInstance()
-        calendario.time = data
+
 
         if (noticias == null) {
             val noticia = Noticias(
                 titulo,
                 Categoria("?", "?", categoria),
-                calendario
+                dataNoticia
             )
             insereNoticia(noticia)
         }else{
             val noticia = noticias!!
             noticia.titulo = titulo
             noticia.categoria = Categoria("?","?",categoria)
-            noticia.data = calendario
+            noticia.data = dataNoticia
 
             alteraNoticia(noticia)
         }
