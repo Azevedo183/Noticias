@@ -36,5 +36,6 @@
     <string name="Eliminar_Label">Eliminar Noticia</string>
     <string name="Eliminar">Eliminar</string>
     <string name="noticia_eliminada_com_sucesso">Noticia eliminada com sucesso</string>
-    <string name="erro_eliminar_noticia">Erro ao eliminar noticia</string>
+    <string name="erro_eliminar_noticia">Erro ao eliminar noticia</string>4
+    <string name="editar_label">Editar Noticia</string>
 </resources>

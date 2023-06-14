@@ -55,10 +55,15 @@ class EditarNoticia_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
         val noticia = EditarNoticia_FragmentArgs.fromBundle(requireArguments()).noticias
 
         if (noticia != null){
+            activity.atualizaTitulo(R.string.editar_label)
 
             binding.insertTextTitulo.setText(noticia.titulo)
             binding.editTextData.setText(DateFormat.format("dd-MM-yyyy", noticia.data))
+        }else{
+            activity.atualizaTitulo(R.string.nova_noticia_lable)
         }
+
+        this.noticias = noticia
     }
 
     override fun onDestroyView() {
