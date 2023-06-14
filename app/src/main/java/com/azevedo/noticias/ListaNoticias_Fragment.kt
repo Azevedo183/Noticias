@@ -4,7 +4,6 @@ import android.database.Cursor
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
@@ -111,7 +110,8 @@ class ListaNoticias_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
     }
 
     private fun eliminarNoticia() {
-        findNavController().navigate(R.id.action_ListaNoticias_Fragment_to_eleminarNoticia_Fragmento)
+        val acao = ListaNoticias_FragmentDirections.actionListaNoticiasFragmentToEleminarNoticiaFragmento(noticiaSelecionado!!)
+        findNavController().navigate(acao)
     }
 
 

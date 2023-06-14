@@ -8,8 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.azevedo.noticias.databinding.FragmentEleminarNoticiaFragmentoBinding
+import android.text.format.DateFormat
 
 class EliminarNoticia_Fragmento : Fragment() {
+    private lateinit var noticias: Noticias
     private var _binding: FragmentEleminarNoticiaFragmentoBinding? = null
 
     private val binding get() = _binding!!
@@ -30,6 +32,13 @@ class EliminarNoticia_Fragmento : Fragment() {
         val activity = activity as MainActivity
         activity.fragment = this
         activity.idMenuAtual = R.menu.menu_eleminar
+
+        noticias = EliminarNoticia_FragmentoArgs.fromBundle(requireArguments()).noticias
+
+        binding.textViewTituloEliminar.text = noticias.titulo
+        binding.textViewCategoriaEliminar.text = noticias.categoria.nome
+        binding.textViewDataEliminar.text = DateFormat.format("dd-MM-yyyy", noticias.data)
+
     }
 
     override fun onDestroyView() {
