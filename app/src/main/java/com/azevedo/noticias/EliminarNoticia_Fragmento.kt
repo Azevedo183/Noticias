@@ -64,7 +64,7 @@ class EliminarNoticia_Fragmento : Fragment() {
     }
 
     private fun voltaListaNoticias() {
-        findNavController().navigate(R.id.action_eleminarNoticia_Fragmento_to_ListaNoticias_Fragment)
+        findNavController().navigate(R.id.action_eliminarNoticia_Fragmento_to_ListaNoticias_Fragment)
     }
 
     private fun eliminar() {

@@ -40,24 +40,24 @@
             android:id="@+id/action_ListaNoticias_Fragment_to_MenuPrincipal_Fragment"
             app:destination="@id/MenuPrincipal_Fragment" />
         <action
-            android:id="@+id/action_ListaNoticias_Fragment_to_novaNoticia_Fragment"
-            app:destination="@id/novaNoticia_Fragment" />
+            android:id="@+id/action_ListaNoticias_Fragment_to_EditarNoticia_Fragment"
+            app:destination="@id/EditarNoticia_Fragment" />
         <action
-            android:id="@+id/action_ListaNoticias_Fragment_to_eleminarNoticia_Fragmento"
-            app:destination="@id/eleminarNoticia_Fragmento" />
+            android:id="@+id/action_ListaNoticias_Fragment_to_eliminarNoticia_Fragmento"
+            app:destination="@id/eliminarNoticia_Fragmento" />
     </fragment>
     <fragment
-        android:id="@+id/novaNoticia_Fragment"
+        android:id="@+id/EditarNoticia_Fragment"
         android:name="com.azevedo.noticias.EditarNoticia_Fragment"
         android:label="@string/nova_noticia_lable"
         tools:layout="@layout/fragment_nova_noticia_">
-        <action
-            android:id="@+id/action_novaNoticia_Fragment_to_ListaNoticias_Fragment"
-            app:destination="@id/ListaNoticias_Fragment" />
         <argument
             android:name="noticias"
             app:argType="com.azevedo.noticias.Noticias"
             app:nullable="true"/>
+        <action
+            android:id="@+id/action_EditarNoticia_Fragment_to_ListaNoticias_Fragment"
+            app:destination="@id/ListaNoticias_Fragment" />
     </fragment>
     <fragment
         android:id="@+id/listaCategorias_Fragment"
@@ -81,12 +81,12 @@
             app:destination="@id/listaCategorias_Fragment" />
     </fragment>
     <fragment
-        android:id="@+id/eleminarNoticia_Fragmento"
+        android:id="@+id/eliminarNoticia_Fragmento"
         android:name="com.azevedo.noticias.EliminarNoticia_Fragmento"
         android:label="@string/Eliminar_Label"
         tools:layout="@layout/fragment_eleminar_noticia__fragmento">
         <action
-            android:id="@+id/action_eleminarNoticia_Fragmento_to_ListaNoticias_Fragment"
+            android:id="@+id/action_eliminarNoticia_Fragmento_to_ListaNoticias_Fragment"
             app:destination="@id/ListaNoticias_Fragment" />
         <argument
         android:name="noticias"

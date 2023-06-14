@@ -20,11 +20,13 @@ import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
+import android.text.format.DateFormat
 
 
 private const val ID_LOADER_CATEGORIAS = 0
 
 class EditarNoticia_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
+    private var noticias: Noticias?= null
     private var _binding: FragmentNovaNoticiaBinding? = null
     private val binding get() = _binding!!
 
@@ -48,6 +50,13 @@ class EditarNoticia_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
         val activity = activity as MainActivity
         activity.fragment = this
         activity.idMenuAtual = R.menu.menu_guardar_cancelar
+
+        val noticia = EditarNoticia_FragmentArgs.fromBundle(requireArguments()).noticias
+
+        if (noticia != null){
+            binding.insertTextTitulo.setText(noticia.titulo)
+            binding.editTextData.setText(DateFormat.format("dd-MM-yyyy", noticia.data))
+        }
     }
 
     override fun onDestroyView() {
@@ -56,7 +65,7 @@ class EditarNoticia_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
     }
 
     private fun voltarlistaNoticias(){
-        findNavController().navigate(R.id.action_novaNoticia_Fragment_to_ListaNoticias_Fragment)
+        findNavController().navigate(R.id.action_EditarNoticia_Fragment_to_ListaNoticias_Fragment)
     }
 
     fun processaOpcaoMenu(item: MenuItem): Boolean {
@@ -142,6 +151,22 @@ class EditarNoticia_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
             intArrayOf(android.R.id.text1),
             0
         )
+
+        mostraCategoriaSelecionadaSpinner()
+    }
+
+    private fun mostraCategoriaSelecionadaSpinner() {
+        if (noticias == null) return
+
+        val idCategoria = noticias!!.categoria.id
+
+        val ultimaCategoria = binding.SpinnerCategorias.count - 1
+        for (i in 0..ultimaCategoria){
+            if (idCategoria == binding.SpinnerCategorias.getItemIdAtPosition(i)){
+                binding.SpinnerCategorias.setSelection(i)
+                return
+            }
+        }
     }
 
 

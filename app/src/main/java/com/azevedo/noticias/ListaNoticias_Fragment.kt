@@ -102,15 +102,16 @@ class ListaNoticias_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
 
 
     private fun adicionaNoticia() {
-            findNavController().navigate(R.id.action_ListaNoticias_Fragment_to_novaNoticia_Fragment)
+            findNavController().navigate(R.id.action_ListaNoticias_Fragment_to_EditarNoticia_Fragment)
 
     }
     private fun editarNoticia() {
-        TODO("Not yet implemented")
+        val acao = ListaNoticias_FragmentDirections.actionListaNoticiasFragmentToEditarNoticiaFragment(noticiaSelecionado!!)
+        findNavController().navigate(acao)
     }
 
     private fun eliminarNoticia() {
-        val acao = ListaNoticias_FragmentDirections.actionListaNoticiasFragmentToEleminarNoticiaFragmento(noticiaSelecionado!!)
+        val acao = ListaNoticias_FragmentDirections.actionListaNoticiasFragmentToEliminarNoticiaFragmento(noticiaSelecionado!!)
         findNavController().navigate(acao)
     }
 
