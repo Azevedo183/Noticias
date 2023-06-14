@@ -51,13 +51,13 @@
         android:name="com.azevedo.noticias.EditarNoticia_Fragment"
         android:label="@string/nova_noticia_lable"
         tools:layout="@layout/fragment_editar_noticia_">
+        <action
+            android:id="@+id/action_EditarNoticia_Fragment_to_ListaNoticias_Fragment"
+            app:destination="@id/ListaNoticias_Fragment" />
         <argument
             android:name="noticias"
             app:argType="com.azevedo.noticias.Noticias"
             app:nullable="true"/>
-        <action
-            android:id="@+id/action_EditarNoticia_Fragment_to_ListaNoticias_Fragment"
-            app:destination="@id/ListaNoticias_Fragment" />
     </fragment>
     <fragment
         android:id="@+id/listaCategorias_Fragment"

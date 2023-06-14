@@ -8,14 +8,14 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.azevedo.noticias.databinding.FragmentEleminarNoticiaFragmentoBinding
+import com.azevedo.noticias.databinding.FragmentEliminarNoticiaFragmentoBinding
 import android.text.format.DateFormat
 import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
 
 class EliminarNoticia_Fragmento : Fragment() {
     private lateinit var noticias: Noticias
-    private var _binding: FragmentEleminarNoticiaFragmentoBinding? = null
+    private var _binding: FragmentEliminarNoticiaFragmentoBinding? = null
 
     private val binding get() = _binding!!
 
@@ -24,7 +24,7 @@ class EliminarNoticia_Fragmento : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentEleminarNoticiaFragmentoBinding.inflate(inflater, container, false)
+        _binding = FragmentEliminarNoticiaFragmentoBinding.inflate(inflater, container, false)
         return binding.root
 
     }

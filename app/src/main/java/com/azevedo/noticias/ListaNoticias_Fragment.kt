@@ -104,7 +104,8 @@ class ListaNoticias_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
 
 
     private fun adicionaNoticia() {
-            findNavController().navigate(R.id.action_ListaNoticias_Fragment_to_EditarNoticia_Fragment)
+        val acao = ListaNoticias_FragmentDirections.actionListaNoticiasFragmentToEditarNoticiaFragment(null)
+        findNavController().navigate(acao)
 
     }
     private fun editarNoticia() {

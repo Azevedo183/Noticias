@@ -9,18 +9,13 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SimpleCursorAdapter
-import android.widget.Spinner
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
-import java.lang.Exception
-import java.text.SimpleDateFormat
 import java.util.Calendar
-import java.util.Date
-import android.text.format.DateFormat
 import com.azevedo.noticias.databinding.FragmentEditarNoticiaBinding
 
 
@@ -45,9 +40,9 @@ class EditarNoticia_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.calendarViewDataNoticia.setOnDateChangeListener { calendarView, year, month, dayOfMonth ->
+        binding.calendarViewDataNoticia.setOnDateChangeListener { calendarView,dayOfMonth , month,year  ->
             if (dataNoticia == null) dataNoticia = Calendar.getInstance()
-            dataNoticia!!.set(year, month, dayOfMonth)
+            dataNoticia!!.set(dayOfMonth , month,year)
         }
 
         val loader = LoaderManager.getInstance(this)
@@ -63,8 +58,10 @@ class EditarNoticia_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
             activity.atualizaTitulo(R.string.editar_label)
 
             binding.insertTextTitulo.setText(noticia.titulo)
-            dataNoticia = noticia.data
-            binding.calendarViewDataNoticia.date = dataNoticia!!.timeInMillis
+            if (noticia.data != null) {
+                dataNoticia = noticia.data
+                binding.calendarViewDataNoticia.date = dataNoticia!!.timeInMillis
+            }
         }else{
             activity.atualizaTitulo(R.string.nova_noticia_lable)
         }
@@ -75,10 +72,6 @@ class EditarNoticia_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    private fun voltarlistaNoticias(){
-        findNavController().navigate(R.id.action_EditarNoticia_Fragment_to_ListaNoticias_Fragment)
     }
 
     fun processaOpcaoMenu(item: MenuItem): Boolean {
@@ -95,6 +88,9 @@ class EditarNoticia_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
         }
     }
 
+    private fun voltarlistaNoticias(){
+        findNavController().navigate(R.id.action_EditarNoticia_Fragment_to_ListaNoticias_Fragment)
+    }
     private fun guardar() {
         val titulo = binding.insertTextTitulo.text.toString()
         if (titulo.isBlank()) {
@@ -104,13 +100,6 @@ class EditarNoticia_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
         }
 
         val categoria = binding.SpinnerCategorias.selectedItemId
-        if (categoria == Spinner.INVALID_ROW_ID) {
-            binding.textViewCategoria.error = getString(R.string.categoria_obrigatoria)
-            binding.SpinnerCategorias.requestFocus()
-            return
-        }
-
-
 
 
         if (noticias == null) {

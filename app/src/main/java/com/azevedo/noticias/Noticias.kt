@@ -9,14 +9,14 @@ import java.util.Calendar
 data class Noticias(
     var titulo: String,
     var categoria: Categoria,
-    var data: Calendar,
+    var data: Calendar? = null,
     var id: Long = -1) : Serializable {
 
     fun toContentValues() : ContentValues{
         val valores = ContentValues()
 
         valores.put(Tabela_Noticias.CAMPO_TITULO, titulo)
-        valores.put(Tabela_Noticias.CAMPO_DATA, data.timeInMillis)
+        valores.put(Tabela_Noticias.CAMPO_DATA, data?.timeInMillis)
         valores.put(Tabela_Noticias.CAMPO_FK_CATEGORIA, categoria.id)
 
         return valores
@@ -34,13 +34,21 @@ data class Noticias(
 
             val id = cursor.getLong(posicaoid)
             val titulo = cursor.getString(posicaoTitulo)
-            val data: Calendar = Calendar.getInstance()
-            data.timeInMillis = cursor.getLong(posicaoData)
+
+            var dataNoticia: Calendar?
+
+            if(cursor.isNull(posicaoData)) {
+                dataNoticia = null
+            }else{
+                dataNoticia = Calendar.getInstance()
+                dataNoticia.timeInMillis = cursor.getLong(posicaoData)
+            }
+
             val categoriaID = cursor.getLong(posCategoriaFK)
             val nomeCategoria = cursor.getString(posNomeCateg)
             val descCategoria = cursor.getString(posDescCateg)
 
-            return Noticias(titulo, Categoria(nomeCategoria, descCategoria,categoriaID), data ,id)
+            return Noticias(titulo, Categoria(nomeCategoria, descCategoria,categoriaID), dataNoticia ,id)
         }
     }
 }
