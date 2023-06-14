@@ -24,7 +24,7 @@ import java.util.Date
 
 private const val ID_LOADER_CATEGORIAS = 0
 
-class NovaNoticia_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
+class EditarNoticia_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     private var _binding: FragmentNovaNoticiaBinding? = null
     private val binding get() = _binding!!
 

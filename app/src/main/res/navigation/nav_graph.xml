@@ -48,7 +48,7 @@
     </fragment>
     <fragment
         android:id="@+id/novaNoticia_Fragment"
-        android:name="com.azevedo.noticias.NovaNoticia_Fragment"
+        android:name="com.azevedo.noticias.EditarNoticia_Fragment"
         android:label="@string/nova_noticia_lable"
         tools:layout="@layout/fragment_nova_noticia_">
         <action

@@ -1,7 +1,6 @@
 package com.azevedo.noticias
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.navigation.findNavController
@@ -56,7 +55,7 @@ class MainActivity : AppCompatActivity() {
 
             val opcaoProcessada = when (fragment){
                 is ListaNoticias_Fragment -> (fragment as ListaNoticias_Fragment).processaOpcaoMenu(item)
-                is NovaNoticia_Fragment -> (fragment as NovaNoticia_Fragment).processaOpcaoMenu(item)
+                is EditarNoticia_Fragment -> (fragment as EditarNoticia_Fragment).processaOpcaoMenu(item)
                 is ListaCategorias_Fragment -> (fragment as ListaCategorias_Fragment).processaOpcaoMenu(item)
                 is NovaCategoria_Fragment -> (fragment as NovaCategoria_Fragment).processaOpcaoMenu(item)
                 is EliminarNoticia_Fragmento -> (fragment as EliminarNoticia_Fragmento).processaOpcaoMenu(item)
