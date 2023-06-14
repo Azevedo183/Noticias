@@ -2,6 +2,7 @@ package com.azevedo.noticias
 
 
 import android.database.Cursor
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -109,19 +110,63 @@ class EditarNoticia_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
 
         val calendario = Calendar.getInstance()
         calendario.time = data
-        val noticia = Noticias(titulo, Categoria("?","?",categoria), calendario)
 
-        requireActivity().contentResolver.insert(NoticiasContentProvider.ENDERECO_NOTICIAS, noticia.toContentValues())
+        if (noticias == null) {
+            val noticia = Noticias(
+                titulo,
+                Categoria("?", "?", categoria),
+                calendario
+            )
+            insereNoticia(noticia)
+        }else{
+            val noticia = noticias!!
+            noticia.titulo = titulo
+            noticia.categoria = Categoria("?","?",categoria)
+            noticia.data = calendario
 
-        if (id == null){
+            alteraNoticia(noticia)
+        }
+    }
+
+    private fun alteraNoticia(
+        noticia: Noticias
+    ) {
+        val enderecoNoticia = Uri.withAppendedPath(NoticiasContentProvider.ENDERECO_NOTICIAS, noticia.id.toString())
+        val noticiasAlteradas = requireActivity().contentResolver.update(enderecoNoticia, noticia.toContentValues(), null,null)
+
+        if(noticiasAlteradas == 1){
+            Toast.makeText(requireContext(), R.string.noticia_guardada_com_sucesso, Toast.LENGTH_LONG).show()
+            voltarlistaNoticias()
+        }else{
             binding.insertTextTitulo.error = getString(R.string.n_o_foi_possivel_guardar_a_noticia)
-            return
+        }
+    }
+
+    private fun insereNoticia(
+        noticia: Noticias
+    ){
+
+
+           val id = requireActivity().contentResolver.insert(
+                NoticiasContentProvider.ENDERECO_NOTICIAS,
+                noticia.toContentValues()
+            )
+
+            if (id == null) {
+                binding.insertTextTitulo.error =
+                    getString(R.string.n_o_foi_possivel_guardar_a_noticia)
+                return
+            }
+
+
+            Toast.makeText(
+                requireContext(),
+                getString(R.string.noticia_guardada_com_sucesso),
+                Toast.LENGTH_LONG
+            ).show()
+            voltarlistaNoticias()
         }
 
-
-            Toast.makeText(requireContext(), getString(R.string.noticia_guardada_com_sucesso), Toast.LENGTH_LONG).show()
-            voltarlistaNoticias()
-    }
 
     override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
         return CursorLoader(
