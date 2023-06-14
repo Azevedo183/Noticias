@@ -34,7 +34,7 @@ class EditarNoticia_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = FragmentNovaNoticiaBinding.inflate(inflater, container, false)
         return binding.root
@@ -55,6 +55,7 @@ class EditarNoticia_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
         val noticia = EditarNoticia_FragmentArgs.fromBundle(requireArguments()).noticias
 
         if (noticia != null){
+
             binding.insertTextTitulo.setText(noticia.titulo)
             binding.editTextData.setText(DateFormat.format("dd-MM-yyyy", noticia.data))
         }
@@ -98,7 +99,7 @@ class EditarNoticia_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
             return
         }
 
-        val data: Date
+        val data: Date?
         val df = SimpleDateFormat("dd-MM-yyyy")
         try {
             data = df.parse(binding.editTextData.text.toString())
@@ -146,7 +147,6 @@ class EditarNoticia_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
         noticia: Noticias
     ){
 
-
            val id = requireActivity().contentResolver.insert(
                 NoticiasContentProvider.ENDERECO_NOTICIAS,
                 noticia.toContentValues()
@@ -179,7 +179,9 @@ class EditarNoticia_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor>
     }
 
     override fun onLoaderReset(loader: Loader<Cursor>) {
-        binding.SpinnerCategorias.adapter = null
+        if (_binding != null) {
+            binding.SpinnerCategorias.adapter = null
+        }
     }
 
 
