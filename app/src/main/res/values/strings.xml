@@ -41,4 +41,6 @@
     <string name="eliminar_categoria_lable">Eliminar Categoria</string>
     <string name="categoria_eliminada_com_sucesso">Categoria Eliminada com Sucesso</string>
     <string name="erro_ao_eliminar_categoria">Erro ao Eliminar Categoria</string>
+    <string name="editar_categoria">Editar Categoria</string>
+    <string name="categoria_alterada_com_sucesso">Categoria Alterada com sucesso</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.azevedo.noticias
 
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,7 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.azevedo.noticias.databinding.FragmentEditarCategoriaBinding
 
 class EditarCategoria_Fragment : Fragment() {
-
+    private var categorias: Categoria?= null
     private var _binding: FragmentEditarCategoriaBinding? = null
 
     private val binding get() = _binding!!
@@ -33,6 +34,19 @@ class EditarCategoria_Fragment : Fragment() {
         val activity = activity as MainActivity
         activity.fragment = this
         activity.idMenuAtual = R.menu.menu_guardar_cancelar
+
+        val categoria = EditarCategoria_FragmentArgs.fromBundle(requireArguments()).categorias
+
+        if (categoria != null){
+            activity.atualizaTitulo(R.string.editar_categoria)
+
+            binding.editTextNomeCategoria.setText(categoria.nome)
+            binding.editTextDescricaoCategoria.setText(categoria.descricao)
+        }else{
+            activity.atualizaTitulo(R.string.NovaCategoria_Lable)
+        }
+
+        this.categorias = categoria
     }
 
     override fun onDestroyView() {
@@ -73,17 +87,52 @@ class EditarCategoria_Fragment : Fragment() {
             return
         }
 
-        val categoria = Categoria(nome, descricao)
 
-        requireActivity().contentResolver.insert(NoticiasContentProvider.ENDERECO_CATEGORIA, categoria.toContentVaules())
 
-        if (id == null){
+        if (categorias == null){
+            val categoria = Categoria(nome, descricao)
+
+            insereCategoria(categoria)
+        }else{
+            val categoria = categorias!!
+            categoria.nome = nome
+            categoria.descricao = descricao
+
+            alteraCategoria(categoria)
+        }
+
+    }
+
+    private fun alteraCategoria(categoria: Categoria) {
+        val enderecoCategoria = Uri.withAppendedPath(NoticiasContentProvider.ENDERECO_CATEGORIA, categoria.id.toString())
+        val CategoriasAlteradas = requireActivity().contentResolver.update(enderecoCategoria, categoria.toContentVaules(), null,null)
+
+        if(CategoriasAlteradas == 1){
+            Toast.makeText(requireContext(), getString(R.string.categoria_alterada_com_sucesso), Toast.LENGTH_LONG).show()
+            voltarlistaCategorias()
+        }else{
             binding.editTextNomeCategoria.error = getString(R.string.imposivel_guardar_categoria)
+        }
+    }
+
+    private fun insereCategoria(categoria: Categoria) {
+        val id = requireActivity().contentResolver.insert(
+            NoticiasContentProvider.ENDERECO_CATEGORIA,
+            categoria.toContentVaules()
+        )
+
+        if (id == null) {
+            binding.editTextNomeCategoria.error =
+                getString(R.string.imposivel_guardar_categoria)
             return
         }
 
 
-        Toast.makeText(requireContext(), getString(R.string.categoria_saved), Toast.LENGTH_LONG).show()
+        Toast.makeText(
+            requireContext(),
+            getString(R.string.categoria_saved),
+            Toast.LENGTH_LONG
+        ).show()
         voltarlistaCategorias()
     }
 
