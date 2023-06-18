@@ -13,7 +13,6 @@ import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.azevedo.noticias.databinding.FragmentListaCategoriasBinding
-import com.azevedo.noticias.databinding.FragmentSobreBinding
 
 private const val ID_LOADER_CATEGORIAS = 0
 class ListaCategorias_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
@@ -107,7 +106,7 @@ class ListaCategorias_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Curso
     }
 
     private fun adicionaCategoria() {
-        findNavController().navigate(R.id.action_listaCategorias_Fragment_to_novaCategoria_Fragment)
+        findNavController().navigate(R.id.action_listaCategorias_Fragment_to_EditarCategoria_Fragment)
     }
 
 

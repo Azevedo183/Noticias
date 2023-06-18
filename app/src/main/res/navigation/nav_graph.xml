@@ -68,16 +68,19 @@
             android:id="@+id/action_listaCategorias_Fragment_to_MenuPrincipal_Fragment"
             app:destination="@id/MenuPrincipal_Fragment" />
         <action
-            android:id="@+id/action_listaCategorias_Fragment_to_novaCategoria_Fragment"
-            app:destination="@id/novaCategoria_Fragment" />
+            android:id="@+id/action_listaCategorias_Fragment_to_EditarCategoria_Fragment"
+            app:destination="@id/EditarCategoria_Fragment" />
+        <action
+            android:id="@+id/action_listaCategorias_Fragment_to_eliminarCategoria_Fragment"
+            app:destination="@id/eliminarCategoria_Fragment" />
     </fragment>
     <fragment
-        android:id="@+id/novaCategoria_Fragment"
-        android:name="com.azevedo.noticias.NovaCategoria_Fragment"
+        android:id="@+id/EditarCategoria_Fragment"
+        android:name="com.azevedo.noticias.EditarCategoria_Fragment"
         android:label="@string/NovaCategoria_Lable"
-        tools:layout="@layout/fragment_nova_categoria_">
+        tools:layout="@layout/fragment_editar_categoria_">
         <action
-            android:id="@+id/action_novaCategoria_Fragment_to_listaCategorias_Fragment"
+            android:id="@+id/action_EditarCategoria_Fragment_to_listaCategorias_Fragment"
             app:destination="@id/listaCategorias_Fragment" />
     </fragment>
     <fragment
@@ -91,6 +94,18 @@
         <argument
         android:name="noticias"
         app:argType="com.azevedo.noticias.Noticias" />
+    </fragment>
+    <fragment
+        android:id="@+id/eliminarCategoria_Fragment"
+        android:name="com.azevedo.noticias.EliminarCategoria_Fragment"
+        android:label="@string/eliminar_categoria_lable"
+        tools:layout="@layout/fragment_eliminar_categoria_">
+        <action
+            android:id="@+id/action_eliminarCategoria_Fragment_to_listaCategorias_Fragment"
+            app:destination="@id/listaCategorias_Fragment" />
+        <argument
+            android:name="noticias"
+            app:argType="com.azevedo.noticias.Noticias" />
     </fragment>
 
 </navigation>

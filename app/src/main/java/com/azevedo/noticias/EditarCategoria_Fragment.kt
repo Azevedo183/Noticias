@@ -6,19 +6,13 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Spinner
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
-import com.azevedo.noticias.databinding.FragmentNovaCategoriaBinding
-import com.azevedo.noticias.databinding.FragmentSobreBinding
-import java.lang.Exception
-import java.text.SimpleDateFormat
-import java.util.Calendar
-import java.util.Date
+import com.azevedo.noticias.databinding.FragmentEditarCategoriaBinding
 
-class NovaCategoria_Fragment : Fragment() {
+class EditarCategoria_Fragment : Fragment() {
 
-    private var _binding: FragmentNovaCategoriaBinding? = null
+    private var _binding: FragmentEditarCategoriaBinding? = null
 
     private val binding get() = _binding!!
 
@@ -27,7 +21,7 @@ class NovaCategoria_Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentNovaCategoriaBinding.inflate(inflater, container, false)
+        _binding = FragmentEditarCategoriaBinding.inflate(inflater, container, false)
         return binding.root
 
     }
@@ -47,7 +41,7 @@ class NovaCategoria_Fragment : Fragment() {
     }
 
     private fun voltarlistaCategorias(){
-        findNavController().navigate(R.id.action_novaCategoria_Fragment_to_listaCategorias_Fragment)
+        findNavController().navigate(R.id.action_EditarCategoria_Fragment_to_listaCategorias_Fragment)
     }
 
     fun processaOpcaoMenu(item: MenuItem): Boolean {
