@@ -59,6 +59,7 @@ class MainActivity : AppCompatActivity() {
                 is ListaCategorias_Fragment -> (fragment as ListaCategorias_Fragment).processaOpcaoMenu(item)
                 is EditarCategoria_Fragment -> (fragment as EditarCategoria_Fragment).processaOpcaoMenu(item)
                 is EliminarNoticia_Fragmento -> (fragment as EliminarNoticia_Fragmento).processaOpcaoMenu(item)
+                is EliminarCategoria_Fragment -> (fragment as EliminarCategoria_Fragment).processaOpcaoMenu(item)
                 else -> false
             }
             return if (opcaoProcessada){

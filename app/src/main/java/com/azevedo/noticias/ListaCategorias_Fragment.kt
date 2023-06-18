@@ -98,7 +98,8 @@ class ListaCategorias_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Curso
     }
 
     private fun eliminarCategoria() {
-        TODO("Not yet implemented")
+        val acao = ListaCategorias_FragmentDirections.actionListaCategoriasFragmentToEliminarCategoriaFragment(categoriaSelecionado!!)
+        findNavController().navigate(acao)
     }
 
     private fun editarCategoria() {
@@ -106,7 +107,8 @@ class ListaCategorias_Fragment : Fragment(), LoaderManager.LoaderCallbacks<Curso
     }
 
     private fun adicionaCategoria() {
-        findNavController().navigate(R.id.action_listaCategorias_Fragment_to_EditarCategoria_Fragment)
+        val acao = ListaCategorias_FragmentDirections.actionListaCategoriasFragmentToEditarCategoriaFragment(null)
+        findNavController().navigate(acao)
     }
 
 

@@ -39,4 +39,6 @@
     <string name="erro_eliminar_noticia">Erro ao eliminar noticia</string>4
     <string name="editar_label">Editar Noticia</string>
     <string name="eliminar_categoria_lable">Eliminar Categoria</string>
+    <string name="categoria_eliminada_com_sucesso">Categoria Eliminada com Sucesso</string>
+    <string name="erro_ao_eliminar_categoria">Erro ao Eliminar Categoria</string>
 </resources>
