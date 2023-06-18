@@ -10,16 +10,15 @@
         android:name="com.azevedo.noticias.MenuPrincipal_Fargment"
         android:label="@string/MenuPrincipal_fragment_label"
         tools:layout="@layout/fragment_menuprincipal">
-
-        <action
-            android:id="@+id/action_MenuPrincipal_Fragment_to_Sobre_Fragment"
-            app:destination="@id/Sobre_Fragment" />
         <action
             android:id="@+id/action_MenuPrincipal_Fragment_to_ListaNoticias_Fragment"
             app:destination="@id/ListaNoticias_Fragment" />
         <action
             android:id="@+id/action_MenuPrincipal_Fragment_to_listaCategorias_Fragment"
             app:destination="@id/listaCategorias_Fragment" />
+        <action
+            android:id="@+id/action_MenuPrincipal_Fragment_to_Sobre_Fragment"
+            app:destination="@id/Sobre_Fragment" />
     </fragment>
     <fragment
         android:id="@+id/Sobre_Fragment"

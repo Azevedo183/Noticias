@@ -3,8 +3,9 @@ package com.azevedo.noticias
 import android.content.ContentValues
 import android.database.Cursor
 import android.provider.BaseColumns
+import java.io.Serializable
 
-data class Categoria(var nome: String, var descricao: String, var id: Long = -1) {
+data class Categoria(var nome: String, var descricao: String, var id: Long = -1): Serializable {
 
     fun toContentVaules(): ContentValues {
         val valores = ContentValues()
