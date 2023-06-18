@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_MenuPrincipal_Fragment_to_Sobre_Fragment"
             app:destination="@id/Sobre_Fragment" />
+        <action
+            android:id="@+id/action_MenuPrincipal_Fragment_to_pesquisa_Fragment"
+            app:destination="@id/pesquisa_Fragment" />
     </fragment>
     <fragment
         android:id="@+id/Sobre_Fragment"
@@ -109,6 +112,15 @@
         <argument
             android:name="categorias"
             app:argType="com.azevedo.noticias.Categoria" />
+    </fragment>
+    <fragment
+        android:id="@+id/pesquisa_Fragment"
+        android:name="com.azevedo.noticias.Pesquisa_Fragment"
+        android:label="@string/pesquisa_label"
+        tools:layout="@layout/fragment_pesquisa_">
+        <action
+            android:id="@+id/action_pesquisa_Fragment_to_MenuPrincipal_Fragment"
+            app:destination="@id/MenuPrincipal_Fragment" />
     </fragment>
 
 </navigation>

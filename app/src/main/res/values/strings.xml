@@ -43,4 +43,6 @@
     <string name="erro_ao_eliminar_categoria">Erro ao Eliminar Categoria</string>
     <string name="editar_categoria">Editar Categoria</string>
     <string name="categoria_alterada_com_sucesso">Categoria Alterada com sucesso</string>
+    <string name="noticia_pesquisa">Noticia a pesquisar</string>
+    <string name="pesquisa_label">Pesquisa</string>
 </resources>
