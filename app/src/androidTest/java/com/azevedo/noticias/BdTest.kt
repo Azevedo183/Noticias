@@ -247,4 +247,26 @@ class BdTest {
 
     }
 
+    @Test
+    fun consegueInserirDefaultCategorias() {
+        val bd = getWritableDatabase()
+
+        val categorias = listOf(
+            Categoria("Política", "Notícias relacionadas a governos, partidos políticos, eleições, políticas públicas, diplomacia internacional e tomadas de decisão políticas em geral."),
+            Categoria("Economia", "Notícias sobre economia envolvendo mercados financeiros, indicadores econômicos (como taxa de desemprego, inflação, PIB), comércio internacional, políticas econômicas, empresas e empreendedorismo."),
+            Categoria("Internacional", "Notícias relacionadas a eventos e desenvolvimentos em outros países, como conflitos, acordos internacionais, crises humanitárias, questões diplomáticas e relações internacionais em geral."),
+            Categoria("Ciência e Tecnologia", "Notícias sobre avanços científicos, descobertas, pesquisas, inovações tecnológicas, exploração espacial, saúde, meio ambiente, novas tecnologias e seus impactos na sociedade."),
+            Categoria("Esportes", "Notícias sobre diferentes modalidades esportivas, resultados de competições, eventos esportivos, transferências de jogadores, análises de desempenho, entrevistas com atletas e histórias relacionadas ao mundo dos esportes."),
+            Categoria("Entretenimento", "Notícias relacionadas ao entretenimento, incluindo cinema, televisão, música, celebridades, premiações, lançamentos de filmes e séries, eventos culturais, moda e outros aspectos da indústria do entretenimento."),
+            Categoria("Saúde", "Notícias sobre saúde pública, avanços médicos, pesquisas sobre doenças, tratamentos, políticas de saúde, bem-estar, nutrição e dicas relacionadas à saúde física e mental."),
+            Categoria("Educação", "Notícias sobre educação englobando políticas educacionais, reformas, avanços pedagógicos, eventos e tendências na área da educação, educação à distância, bolsas de estudo e oportunidades educacionais."),
+            Categoria("Meio Ambiente", "Notícias relacionadas a questões ambientais, mudanças climáticas, conservação, desastres naturais, energia sustentável, políticas ambientais e esforços para preservar o meio ambiente."),
+            Categoria("Sociedade", "Notícias sobre a sociedade, abrangendo uma variedade de tópicos como direitos humanos, diversidade, desigualdade social, questões de gênero, imigração, criminalidade, mudanças culturais e outros assuntos que afetam a sociedade como um todo.")
+        )
+
+        for (categoria in categorias) {
+            inserirCategoria(bd, categoria)
+        }
+    }
+
 }
