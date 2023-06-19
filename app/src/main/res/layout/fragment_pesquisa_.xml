@@ -11,12 +11,14 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/TextInputPesquisa"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/noticia_pesquisa" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewPesquisa"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="16dp" />
